@@ -1,0 +1,1179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mall.order.repository.OrderDetailMapper">
+	<resultMap id="OrderDetail" type="com.mall.order.domain.OrderDetail">
+		<id property="pkId" javaType="Long" column="pk_id" jdbcType="BIGINT" />
+		<result property="createUser" javaType="Long" column="create_user" jdbcType="BIGINT" />
+		<result property="createTime" javaType="Date" column="create_time" jdbcType="TIMESTAMP" />
+		<result property="updateUser" javaType="Long" column="update_user" jdbcType="BIGINT" />
+		<result property="updateTime" javaType="Date" column="update_time" jdbcType="TIMESTAMP" />
+		<result property="delMark" javaType="Integer" column="del_mark" jdbcType="TINYINT" />
+		<result property="addTime" javaType="Date" column="add_time" jdbcType="TIMESTAMP" />
+		<result property="confirmTime" javaType="Date" column="confirm_time" jdbcType="TIMESTAMP" />
+		<result property="orderExpressId" javaType="Long" column="order_express_id" jdbcType="BIGINT" />
+		<result property="orderSupplierId" javaType="Long" column="order_supplier_id" jdbcType="BIGINT" />
+		<result property="orderVirtualId" javaType="Long" column="order_virtual_id" jdbcType="BIGINT" />
+		<result property="orderNo" javaType="String" column="order_no" jdbcType="CHAR" />
+		<result property="orderStatus" javaType="Integer" column="order_status" jdbcType="TINYINT" />
+		<result property="payType" javaType="String" column="pay_type" jdbcType="CHAR" />
+		<result property="totalPrice" javaType="Double" column="total_price" jdbcType="DECIMAL" />
+		<result property="couponMoney" javaType="Double" column="coupon_money" jdbcType="DECIMAL" />
+		<result property="goldMoney" javaType="Double" column="gold_money" jdbcType="DECIMAL" />
+		<result property="activationMoney" javaType="Double" column="activation_money" jdbcType="DECIMAL" />
+		<result property="depositMoney" javaType="Double" column="deposit_money" jdbcType="DECIMAL" />
+		<result property="payMoney" javaType="Double" column="pay_money" jdbcType="DECIMAL" />
+		<result property="freightMoney" javaType="Double" column="freight_money" jdbcType="DECIMAL" />
+		<result property="freightTemplateId" javaType="Long" column="freight_template_id" jdbcType="BIGINT" />
+		<result property="expressWay" javaType="Integer" column="express_way" jdbcType="TINYINT" />
+		<result property="couponId" javaType="Long" column="coupon_id" jdbcType="BIGINT" />
+		<result property="userId" javaType="Long" column="user_id" jdbcType="BIGINT" />
+		<result property="goodsCount" javaType="Integer" column="goods_count" jdbcType="INTEGER" />
+		<result property="goodsId" javaType="Long" column="goods_id" jdbcType="BIGINT" />
+		<result property="goodsIdPrice" javaType="Double" column="goods_id_price" jdbcType="DECIMAL" />
+		<result property="goodsIdDivideprofitPrice" javaType="Double" column="goods_id_divideprofit_price" jdbcType="DECIMAL" />
+		<result property="goodsIdDiscount" javaType="Double" column="goods_id_discount" jdbcType="DECIMAL" />
+		<result property="goodsIdName" javaType="String" column="goods_id_name" jdbcType="CHAR" />
+		<result property="goodsIdPic" javaType="String" column="goods_id_pic" jdbcType="CHAR" />
+		<result property="goodsSpecDetailId" javaType="Long" column="goods_spec_detail_id" jdbcType="BIGINT" />
+		<result property="goodsSpec" javaType="String" column="goods_spec" jdbcType="CHAR" />
+		<result property="supplierId" javaType="Long" column="supplier_id" jdbcType="BIGINT" />
+		<result property="supplierIdName" javaType="String" column="supplier_id_name" jdbcType="CHAR" />
+		<result property="supplierIdTel" javaType="String" column="supplier_id_tel" jdbcType="CHAR" />
+		<result property="isWholesale" javaType="Integer" column="is_wholesale" jdbcType="TINYINT" />
+		<result property="wholesalePrice" javaType="Double" column="wholesale_price" jdbcType="DECIMAL" />
+		<result property="orderUserIp" javaType="String" column="order_user_ip" jdbcType="CHAR" />
+		<result property="evaluateStatus" javaType="Integer" column="evaluate_status" jdbcType="TINYINT" />
+		<result property="lastOrderStatus" javaType="Integer" column="last_order_status" jdbcType="TINYINT" />
+		<result property="orderSource" javaType="Integer" column="order_source" jdbcType="TINYINT" />
+		<result property="goodsIdDealPoint" javaType="Double" column="goods_id_deal_point" jdbcType="DECIMAL" />
+		<result property="profitRatio" javaType="Double" column="profit_ratio" jdbcType="DECIMAL" />
+		<result property="localFlag" javaType="Integer" column="local_flag" jdbcType="TINYINT" />
+		<result property="vipGoodsOrderFlag" javaType="Integer" column="vip_goods_order_flag" jdbcType="TINYINT" />
+		<result property="discountRate" javaType="BigDecimal" column="discount_rate" jdbcType="DECIMAL" />
+		<result property="discountPrice" javaType="BigDecimal" column="discount_price" jdbcType="DECIMAL" />
+	</resultMap>
+	
+
+	<!-- 插入数据 -->
+	<insert id="insert" parameterType="Map">
+		<selectKey resultType="long" keyProperty="orderDetail.pkId" order="BEFORE">
+		<![CDATA[select (next value for MYCATSEQ_GLOBAL) AS pk_id]]>
+		</selectKey>
+		<![CDATA[
+		INSERT INTO t_order_detail (
+			pk_id,
+			create_user,
+			create_time,
+			update_user,
+			update_time,
+			del_mark,
+			add_time,
+			confirm_time,
+			order_express_id,
+			order_supplier_id,
+			order_virtual_id,
+			order_no,
+			order_status,
+			pay_type,
+			total_price,
+			coupon_money,
+			gold_money,
+			activation_money,
+			deposit_money,
+			pay_money,
+			freight_money,
+			freight_template_id,
+			express_way,
+			coupon_id,
+			user_id,
+			goods_count,
+			goods_id,
+			goods_id_price,
+			goods_id_divideprofit_price,
+			goods_id_discount,
+			goods_id_name,
+			goods_id_pic,
+			goods_spec_detail_id,
+			goods_spec,
+			supplier_id,
+			supplier_id_name,
+			supplier_id_tel,
+			is_wholesale,
+			wholesale_price,
+			order_user_ip,
+			evaluate_status,
+			last_order_status,
+			order_source
+		)
+		VALUES
+			(
+				#{orderDetail.pkId, jdbcType = BIGINT},
+				#{orderDetail.createUser, jdbcType = BIGINT},
+				#{orderDetail.createTime, jdbcType = TIMESTAMP},
+				#{orderDetail.updateUser, jdbcType = BIGINT},
+				#{orderDetail.updateTime, jdbcType = TIMESTAMP},
+				#{orderDetail.delMark, jdbcType = TINYINT},
+				#{orderDetail.addTime, jdbcType = TIMESTAMP},
+				#{orderDetail.confirmTime, jdbcType = TIMESTAMP},
+				#{orderDetail.orderExpressId, jdbcType = BIGINT},
+				#{orderDetail.orderSupplierId, jdbcType = BIGINT},
+				#{orderDetail.orderVirtualId, jdbcType = BIGINT},
+				#{orderDetail.orderNo, jdbcType = CHAR},
+				#{orderDetail.orderStatus, jdbcType = TINYINT},
+				#{orderDetail.payType, jdbcType = CHAR},
+				#{orderDetail.totalPrice, jdbcType = DECIMAL},
+				#{orderDetail.couponMoney, jdbcType = DECIMAL},
+				#{orderDetail.goldMoney, jdbcType = DECIMAL},
+				#{orderDetail.activationMoney, jdbcType = DECIMAL},
+				#{orderDetail.depositMoney, jdbcType = DECIMAL},
+				#{orderDetail.payMoney, jdbcType = DECIMAL},
+				#{orderDetail.freightMoney, jdbcType = DECIMAL},
+				#{orderDetail.freightTemplateId, jdbcType = BIGINT},
+				#{orderDetail.expressWay, jdbcType = TINYINT},
+				#{orderDetail.couponId, jdbcType = BIGINT},
+				#{orderDetail.userId, jdbcType = BIGINT},
+				#{orderDetail.goodsCount, jdbcType = INTEGER},
+				#{orderDetail.goodsId, jdbcType = BIGINT},
+				#{orderDetail.goodsIdPrice, jdbcType = DECIMAL},
+				#{orderDetail.goodsIdDivideprofitPrice, jdbcType = DECIMAL},
+				#{orderDetail.goodsIdDiscount, jdbcType = DECIMAL},
+				#{orderDetail.goodsIdName, jdbcType = CHAR},
+				#{orderDetail.goodsIdPic, jdbcType = CHAR},
+				#{orderDetail.goodsSpecDetailId, jdbcType = BIGINT},
+				#{orderDetail.goodsSpec, jdbcType = CHAR},
+				#{orderDetail.supplierId, jdbcType = BIGINT},
+				#{orderDetail.supplierIdName, jdbcType = CHAR},
+				#{orderDetail.supplierIdTel, jdbcType = CHAR},
+				#{orderDetail.isWholesale, jdbcType = TINYINT},
+				#{orderDetail.wholesalePrice, jdbcType = DECIMAL},
+				#{orderDetail.orderUserIp, jdbcType = CHAR},
+				#{orderDetail.evaluateStatus, jdbcType = TINYINT},
+				#{orderDetail.lastOrderStatus, jdbcType = TINYINT},
+				#{orderDetail.orderSource, jdbcType = TINYINT}
+			)
+		]]>
+	</insert>
+	
+	<!-- 更新数据 -->
+	<update id="update" parameterType="Map">
+		<![CDATA[UPDATE t_order_detail]]>
+		<set>
+		<![CDATA[update_user = #{orderDetail.updateUser},]]>
+		<![CDATA[update_time = #{orderDetail.updateTime},]]>
+		<![CDATA[del_mark = #{orderDetail.delMark},]]>
+		<![CDATA[add_time = #{orderDetail.addTime},]]>
+		<![CDATA[confirm_time = #{orderDetail.confirmTime},]]>
+		<![CDATA[order_express_id = #{orderDetail.orderExpressId},]]>
+		<![CDATA[order_supplier_id = #{orderDetail.orderSupplierId},]]>
+		<![CDATA[order_virtual_id = #{orderDetail.orderVirtualId},]]>
+		<![CDATA[order_no = #{orderDetail.orderNo},]]>
+		<![CDATA[order_status = #{orderDetail.orderStatus},]]>
+		<![CDATA[pay_type = #{orderDetail.payType},]]>
+		<![CDATA[total_price = #{orderDetail.totalPrice},]]>
+		<![CDATA[coupon_money = #{orderDetail.couponMoney},]]>
+		<![CDATA[gold_money = #{orderDetail.goldMoney},]]>
+		<![CDATA[activation_money = #{orderDetail.activationMoney},]]>
+		<![CDATA[deposit_money = #{orderDetail.depositMoney},]]>
+		<![CDATA[pay_money = #{orderDetail.payMoney},]]>
+		<![CDATA[freight_money = #{orderDetail.freightMoney},]]>
+		<![CDATA[freight_template_id = #{orderDetail.freightTemplateId},]]>
+		<![CDATA[express_way = #{orderDetail.expressWay},]]>
+		<![CDATA[coupon_id = #{orderDetail.couponId},]]>
+		<![CDATA[user_id = #{orderDetail.userId},]]>
+		<![CDATA[goods_count = #{orderDetail.goodsCount},]]>
+		<![CDATA[goods_id = #{orderDetail.goodsId},]]>
+		<![CDATA[goods_id_price = #{orderDetail.goodsIdPrice},]]>
+		<![CDATA[goods_id_divideprofit_price = #{orderDetail.goodsIdDivideprofitPrice},]]>
+		<![CDATA[goods_id_discount = #{orderDetail.goodsIdDiscount},]]>
+		<![CDATA[goods_id_name = #{orderDetail.goodsIdName},]]>
+		<![CDATA[goods_id_pic = #{orderDetail.goodsIdPic},]]>
+		<![CDATA[goods_spec_detail_id = #{orderDetail.goodsSpecDetailId},]]>
+		<![CDATA[goods_spec = #{orderDetail.goodsSpec},]]>
+		<![CDATA[supplier_id = #{orderDetail.supplierId},]]>
+		<![CDATA[supplier_id_name = #{orderDetail.supplierIdName},]]>
+		<![CDATA[supplier_id_tel = #{orderDetail.supplierIdTel},]]>
+		<![CDATA[is_wholesale = #{orderDetail.isWholesale},]]>
+		<![CDATA[wholesale_price = #{orderDetail.wholesalePrice},]]>
+		<![CDATA[order_user_ip = #{orderDetail.orderUserIp},]]>
+		<![CDATA[evaluate_status = #{orderDetail.evaluateStatus},]]>
+		<![CDATA[last_order_status = #{orderDetail.lastOrderStatus},]]>
+		<![CDATA[order_source = #{orderDetail.orderSource},]]>
+		</set>
+		<where>
+			<if test="where.delMark != null">
+			<![CDATA[AND del_mark = #{where.delMark, jdbcType=TINYINT}]]>
+			</if>
+			<if test="where.addTime != null">
+			<![CDATA[AND add_time = #{where.addTime, jdbcType=TIMESTAMP}]]>
+			</if>
+			<if test="where.confirmTime != null">
+			<![CDATA[AND confirm_time = #{where.confirmTime, jdbcType=TIMESTAMP}]]>
+			</if>
+			<if test="where.orderExpressId != null">
+			<![CDATA[AND order_express_id = #{where.orderExpressId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="where.orderSupplierId != null">
+			<![CDATA[AND order_supplier_id = #{where.orderSupplierId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="where.orderVirtualId != null">
+			<![CDATA[AND order_virtual_id = #{where.orderVirtualId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="where.orderNo != null and where.orderNo != ''">
+			<![CDATA[AND order_no = #{where.orderNo, jdbcType=CHAR}]]>
+			</if>
+			<if test="where.orderStatus != null">
+			<![CDATA[AND order_status = #{where.orderStatus, jdbcType=TINYINT}]]>
+			</if>
+			<if test="where.payType != null and where.payType != ''">
+			<![CDATA[AND pay_type = #{where.payType, jdbcType=CHAR}]]>
+			</if>
+			<if test="where.totalPrice != null">
+			<![CDATA[AND total_price = #{where.totalPrice, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="where.couponMoney != null">
+			<![CDATA[AND coupon_money = #{where.couponMoney, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="where.goldMoney != null">
+			<![CDATA[AND gold_money = #{where.goldMoney, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="where.activationMoney != null">
+			<![CDATA[AND activation_money = #{where.activationMoney, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="where.depositMoney != null">
+			<![CDATA[AND deposit_money = #{where.depositMoney, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="where.payMoney != null">
+			<![CDATA[AND pay_money = #{where.payMoney, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="where.freightMoney != null">
+			<![CDATA[AND freight_money = #{where.freightMoney, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="where.freightTemplateId != null">
+			<![CDATA[AND freight_template_id = #{where.freightTemplateId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="where.expressWay != null">
+			<![CDATA[AND express_way = #{where.expressWay, jdbcType=TINYINT}]]>
+			</if>
+			<if test="where.couponId != null">
+			<![CDATA[AND coupon_id = #{where.couponId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="where.userId != null">
+			<![CDATA[AND user_id = #{where.userId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="where.goodsCount != null">
+			<![CDATA[AND goods_count = #{where.goodsCount, jdbcType=INTEGER}]]>
+			</if>
+			<if test="where.goodsId != null">
+			<![CDATA[AND goods_id = #{where.goodsId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="where.goodsIdPrice != null">
+			<![CDATA[AND goods_id_price = #{where.goodsIdPrice, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="where.goodsIdDivideprofitPrice != null">
+			<![CDATA[AND goods_id_divideprofit_price = #{where.goodsIdDivideprofitPrice, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="where.goodsIdDiscount != null">
+			<![CDATA[AND goods_id_discount = #{where.goodsIdDiscount, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="where.goodsIdName != null and where.goodsIdName != ''">
+			<![CDATA[AND goods_id_name = #{where.goodsIdName, jdbcType=CHAR}]]>
+			</if>
+			<if test="where.goodsIdPic != null and where.goodsIdPic != ''">
+			<![CDATA[AND goods_id_pic = #{where.goodsIdPic, jdbcType=CHAR}]]>
+			</if>
+			<if test="where.goodsSpecDetailId != null">
+			<![CDATA[AND goods_spec_detail_id = #{where.goodsSpecDetailId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="where.goodsSpec != null and where.goodsSpec != ''">
+			<![CDATA[AND goods_spec = #{where.goodsSpec, jdbcType=CHAR}]]>
+			</if>
+			<if test="where.supplierId != null">
+			<![CDATA[AND supplier_id = #{where.supplierId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="where.supplierIdName != null and where.supplierIdName != ''">
+			<![CDATA[AND supplier_id_name = #{where.supplierIdName, jdbcType=CHAR}]]>
+			</if>
+			<if test="where.supplierIdTel != null and where.supplierIdTel != ''">
+			<![CDATA[AND supplier_id_tel = #{where.supplierIdTel, jdbcType=CHAR}]]>
+			</if>
+			<if test="where.isWholesale != null">
+			<![CDATA[AND is_wholesale = #{where.isWholesale, jdbcType=TINYINT}]]>
+			</if>
+			<if test="where.wholesalePrice != null">
+			<![CDATA[AND wholesale_price = #{where.wholesalePrice, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="where.orderUserIp != null and where.orderUserIp != ''">
+			<![CDATA[AND order_user_ip = #{where.orderUserIp, jdbcType=CHAR}]]>
+			</if>
+			<if test="where.evaluateStatus != null">
+			<![CDATA[AND evaluate_status = #{where.evaluateStatus, jdbcType=TINYINT}]]>
+			</if>
+			<if test="where.lastOrderStatus != null">
+			<![CDATA[AND last_order_status = #{where.lastOrderStatus, jdbcType=TINYINT}]]>
+			</if>
+			<if test="where.orderSource != null">
+			<![CDATA[AND order_source = #{where.orderSource, jdbcType=TINYINT}]]>
+			</if>
+			<![CDATA[AND del_mark = '1']]>
+		</where>
+	</update>
+
+	<!-- 根据主键更新 -->
+	<update id="updateById" parameterType="Map">
+		<![CDATA[UPDATE t_order_detail]]>
+		<set>
+		<![CDATA[update_user = #{orderDetail.updateUser},]]>
+		<![CDATA[update_time = #{orderDetail.updateTime},]]>
+		<![CDATA[del_mark = #{orderDetail.delMark},]]>
+		<![CDATA[add_time = #{orderDetail.addTime},]]>
+		<![CDATA[confirm_time = #{orderDetail.confirmTime},]]>
+		<![CDATA[order_express_id = #{orderDetail.orderExpressId},]]>
+		<![CDATA[order_supplier_id = #{orderDetail.orderSupplierId},]]>
+		<![CDATA[order_virtual_id = #{orderDetail.orderVirtualId},]]>
+		<![CDATA[order_no = #{orderDetail.orderNo},]]>
+		<![CDATA[order_status = #{orderDetail.orderStatus},]]>
+		<![CDATA[pay_type = #{orderDetail.payType},]]>
+		<![CDATA[total_price = #{orderDetail.totalPrice},]]>
+		<![CDATA[coupon_money = #{orderDetail.couponMoney},]]>
+		<![CDATA[gold_money = #{orderDetail.goldMoney},]]>
+		<![CDATA[activation_money = #{orderDetail.activationMoney},]]>
+		<![CDATA[deposit_money = #{orderDetail.depositMoney},]]>
+		<![CDATA[pay_money = #{orderDetail.payMoney},]]>
+		<![CDATA[freight_money = #{orderDetail.freightMoney},]]>
+		<![CDATA[freight_template_id = #{orderDetail.freightTemplateId},]]>
+		<![CDATA[express_way = #{orderDetail.expressWay},]]>
+		<![CDATA[coupon_id = #{orderDetail.couponId},]]>
+		<![CDATA[user_id = #{orderDetail.userId},]]>
+		<![CDATA[goods_count = #{orderDetail.goodsCount},]]>
+		<![CDATA[goods_id = #{orderDetail.goodsId},]]>
+		<![CDATA[goods_id_price = #{orderDetail.goodsIdPrice},]]>
+		<![CDATA[goods_id_divideprofit_price = #{orderDetail.goodsIdDivideprofitPrice},]]>
+		<![CDATA[goods_id_discount = #{orderDetail.goodsIdDiscount},]]>
+		<![CDATA[goods_id_name = #{orderDetail.goodsIdName},]]>
+		<![CDATA[goods_id_pic = #{orderDetail.goodsIdPic},]]>
+		<![CDATA[goods_spec_detail_id = #{orderDetail.goodsSpecDetailId},]]>
+		<![CDATA[goods_spec = #{orderDetail.goodsSpec},]]>
+		<![CDATA[supplier_id = #{orderDetail.supplierId},]]>
+		<![CDATA[supplier_id_name = #{orderDetail.supplierIdName},]]>
+		<![CDATA[supplier_id_tel = #{orderDetail.supplierIdTel},]]>
+		<![CDATA[is_wholesale = #{orderDetail.isWholesale},]]>
+		<![CDATA[wholesale_price = #{orderDetail.wholesalePrice},]]>
+		<![CDATA[order_user_ip = #{orderDetail.orderUserIp},]]>
+		<![CDATA[evaluate_status = #{orderDetail.evaluateStatus},]]>
+		<![CDATA[last_order_status = #{orderDetail.lastOrderStatus},]]>
+		<![CDATA[order_source = #{orderDetail.orderSource},]]>
+		</set>
+		<where>
+		<![CDATA[AND pk_id = #{orderDetailId, jdbcType=BIGINT}]]>
+		</where>
+	</update>
+	
+	<!-- 更新有值数据 -->
+	<update id="updateActive" parameterType="Map">
+		<![CDATA[UPDATE t_order_detail]]>
+		<set>
+			<if test="orderDetail.updateUser != null">
+			<![CDATA[update_user = #{orderDetail.updateUser, jdbcType=BIGINT},]]>
+			</if>
+			<if test="orderDetail.updateTime != null">
+			<![CDATA[update_time = #{orderDetail.updateTime, jdbcType=TIMESTAMP},]]>
+			</if>
+			<if test="orderDetail.delMark != null">
+			<![CDATA[del_mark = #{orderDetail.delMark, jdbcType=TINYINT},]]>
+			</if>
+			<if test="orderDetail.addTime != null">
+			<![CDATA[add_time = #{orderDetail.addTime, jdbcType=TIMESTAMP},]]>
+			</if>
+			<if test="orderDetail.confirmTime != null">
+			<![CDATA[confirm_time = #{orderDetail.confirmTime, jdbcType=TIMESTAMP},]]>
+			</if>
+			<if test="orderDetail.orderExpressId != null">
+			<![CDATA[order_express_id = #{orderDetail.orderExpressId, jdbcType=BIGINT},]]>
+			</if>
+			<if test="orderDetail.orderSupplierId != null">
+			<![CDATA[order_supplier_id = #{orderDetail.orderSupplierId, jdbcType=BIGINT},]]>
+			</if>
+			<if test="orderDetail.orderVirtualId != null">
+			<![CDATA[order_virtual_id = #{orderDetail.orderVirtualId, jdbcType=BIGINT},]]>
+			</if>
+			<if test="orderDetail.orderNo != null and orderDetail.orderNo != ''">
+			<![CDATA[order_no = #{orderDetail.orderNo, jdbcType=CHAR},]]>
+			</if>
+			<if test="orderDetail.orderStatus != null">
+			<![CDATA[order_status = #{orderDetail.orderStatus, jdbcType=TINYINT},]]>
+			</if>
+			<if test="orderDetail.payType != null and orderDetail.payType != ''">
+			<![CDATA[pay_type = #{orderDetail.payType, jdbcType=CHAR},]]>
+			</if>
+			<if test="orderDetail.totalPrice != null">
+			<![CDATA[total_price = #{orderDetail.totalPrice, jdbcType=DECIMAL},]]>
+			</if>
+			<if test="orderDetail.couponMoney != null">
+			<![CDATA[coupon_money = #{orderDetail.couponMoney, jdbcType=DECIMAL},]]>
+			</if>
+			<if test="orderDetail.goldMoney != null">
+			<![CDATA[gold_money = #{orderDetail.goldMoney, jdbcType=DECIMAL},]]>
+			</if>
+			<if test="orderDetail.activationMoney != null">
+			<![CDATA[activation_money = #{orderDetail.activationMoney, jdbcType=DECIMAL},]]>
+			</if>
+			<if test="orderDetail.depositMoney != null">
+			<![CDATA[deposit_money = #{orderDetail.depositMoney, jdbcType=DECIMAL},]]>
+			</if>
+			<if test="orderDetail.payMoney != null">
+			<![CDATA[pay_money = #{orderDetail.payMoney, jdbcType=DECIMAL},]]>
+			</if>
+			<if test="orderDetail.freightMoney != null">
+			<![CDATA[freight_money = #{orderDetail.freightMoney, jdbcType=DECIMAL},]]>
+			</if>
+			<if test="orderDetail.freightTemplateId != null">
+			<![CDATA[freight_template_id = #{orderDetail.freightTemplateId, jdbcType=BIGINT},]]>
+			</if>
+			<if test="orderDetail.expressWay != null">
+			<![CDATA[express_way = #{orderDetail.expressWay, jdbcType=TINYINT},]]>
+			</if>
+			<if test="orderDetail.couponId != null">
+			<![CDATA[coupon_id = #{orderDetail.couponId, jdbcType=BIGINT},]]>
+			</if>
+			<if test="orderDetail.userId != null">
+			<![CDATA[user_id = #{orderDetail.userId, jdbcType=BIGINT},]]>
+			</if>
+			<if test="orderDetail.goodsCount != null">
+			<![CDATA[goods_count = #{orderDetail.goodsCount, jdbcType=INTEGER},]]>
+			</if>
+			<if test="orderDetail.goodsId != null">
+			<![CDATA[goods_id = #{orderDetail.goodsId, jdbcType=BIGINT},]]>
+			</if>
+			<if test="orderDetail.goodsIdPrice != null">
+			<![CDATA[goods_id_price = #{orderDetail.goodsIdPrice, jdbcType=DECIMAL},]]>
+			</if>
+			<if test="orderDetail.goodsIdDivideprofitPrice != null">
+			<![CDATA[goods_id_divideprofit_price = #{orderDetail.goodsIdDivideprofitPrice, jdbcType=DECIMAL},]]>
+			</if>
+			<if test="orderDetail.goodsIdDiscount != null">
+			<![CDATA[goods_id_discount = #{orderDetail.goodsIdDiscount, jdbcType=DECIMAL},]]>
+			</if>
+			<if test="orderDetail.goodsIdName != null and orderDetail.goodsIdName != ''">
+			<![CDATA[goods_id_name = #{orderDetail.goodsIdName, jdbcType=CHAR},]]>
+			</if>
+			<if test="orderDetail.goodsIdPic != null and orderDetail.goodsIdPic != ''">
+			<![CDATA[goods_id_pic = #{orderDetail.goodsIdPic, jdbcType=CHAR},]]>
+			</if>
+			<if test="orderDetail.goodsSpecDetailId != null">
+			<![CDATA[goods_spec_detail_id = #{orderDetail.goodsSpecDetailId, jdbcType=BIGINT},]]>
+			</if>
+			<if test="orderDetail.goodsSpec != null and orderDetail.goodsSpec != ''">
+			<![CDATA[goods_spec = #{orderDetail.goodsSpec, jdbcType=CHAR},]]>
+			</if>
+			<if test="orderDetail.supplierId != null">
+			<![CDATA[supplier_id = #{orderDetail.supplierId, jdbcType=BIGINT},]]>
+			</if>
+			<if test="orderDetail.supplierIdName != null and orderDetail.supplierIdName != ''">
+			<![CDATA[supplier_id_name = #{orderDetail.supplierIdName, jdbcType=CHAR},]]>
+			</if>
+			<if test="orderDetail.supplierIdTel != null and orderDetail.supplierIdTel != ''">
+			<![CDATA[supplier_id_tel = #{orderDetail.supplierIdTel, jdbcType=CHAR},]]>
+			</if>
+			<if test="orderDetail.isWholesale != null">
+			<![CDATA[is_wholesale = #{orderDetail.isWholesale, jdbcType=TINYINT},]]>
+			</if>
+			<if test="orderDetail.wholesalePrice != null">
+			<![CDATA[wholesale_price = #{orderDetail.wholesalePrice, jdbcType=DECIMAL},]]>
+			</if>
+			<if test="orderDetail.orderUserIp != null and orderDetail.orderUserIp != ''">
+			<![CDATA[order_user_ip = #{orderDetail.orderUserIp, jdbcType=CHAR},]]>
+			</if>
+			<if test="orderDetail.evaluateStatus != null">
+			<![CDATA[evaluate_status = #{orderDetail.evaluateStatus, jdbcType=TINYINT},]]>
+			</if>
+			<if test="orderDetail.lastOrderStatus != null">
+			<![CDATA[last_order_status = #{orderDetail.lastOrderStatus, jdbcType=TINYINT},]]>
+			</if>
+			<if test="orderDetail.orderSource != null">
+			<![CDATA[order_source = #{orderDetail.orderSource, jdbcType=TINYINT},]]>
+			</if>
+		</set>
+		<where>
+			<if test="where.delMark != null">
+			<![CDATA[AND del_mark = #{where.delMark, jdbcType=TINYINT}]]>
+			</if>
+			<if test="where.addTime != null">
+			<![CDATA[AND add_time = #{where.addTime, jdbcType=TIMESTAMP}]]>
+			</if>
+			<if test="where.confirmTime != null">
+			<![CDATA[AND confirm_time = #{where.confirmTime, jdbcType=TIMESTAMP}]]>
+			</if>
+			<if test="where.orderExpressId != null">
+			<![CDATA[AND order_express_id = #{where.orderExpressId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="where.orderSupplierId != null">
+			<![CDATA[AND order_supplier_id = #{where.orderSupplierId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="where.orderVirtualId != null">
+			<![CDATA[AND order_virtual_id = #{where.orderVirtualId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="where.orderNo != null and where.orderNo != ''">
+			<![CDATA[AND order_no = #{where.orderNo, jdbcType=CHAR}]]>
+			</if>
+			<if test="where.orderStatus != null">
+			<![CDATA[AND order_status = #{where.orderStatus, jdbcType=TINYINT}]]>
+			</if>
+			<if test="where.payType != null and where.payType != ''">
+			<![CDATA[AND pay_type = #{where.payType, jdbcType=CHAR}]]>
+			</if>
+			<if test="where.totalPrice != null">
+			<![CDATA[AND total_price = #{where.totalPrice, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="where.couponMoney != null">
+			<![CDATA[AND coupon_money = #{where.couponMoney, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="where.goldMoney != null">
+			<![CDATA[AND gold_money = #{where.goldMoney, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="where.activationMoney != null">
+			<![CDATA[AND activation_money = #{where.activationMoney, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="where.depositMoney != null">
+			<![CDATA[AND deposit_money = #{where.depositMoney, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="where.payMoney != null">
+			<![CDATA[AND pay_money = #{where.payMoney, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="where.freightMoney != null">
+			<![CDATA[AND freight_money = #{where.freightMoney, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="where.freightTemplateId != null">
+			<![CDATA[AND freight_template_id = #{where.freightTemplateId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="where.expressWay != null">
+			<![CDATA[AND express_way = #{where.expressWay, jdbcType=TINYINT}]]>
+			</if>
+			<if test="where.couponId != null">
+			<![CDATA[AND coupon_id = #{where.couponId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="where.userId != null">
+			<![CDATA[AND user_id = #{where.userId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="where.goodsCount != null">
+			<![CDATA[AND goods_count = #{where.goodsCount, jdbcType=INTEGER}]]>
+			</if>
+			<if test="where.goodsId != null">
+			<![CDATA[AND goods_id = #{where.goodsId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="where.goodsIdPrice != null">
+			<![CDATA[AND goods_id_price = #{where.goodsIdPrice, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="where.goodsIdDivideprofitPrice != null">
+			<![CDATA[AND goods_id_divideprofit_price = #{where.goodsIdDivideprofitPrice, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="where.goodsIdDiscount != null">
+			<![CDATA[AND goods_id_discount = #{where.goodsIdDiscount, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="where.goodsIdName != null and where.goodsIdName != ''">
+			<![CDATA[AND goods_id_name = #{where.goodsIdName, jdbcType=CHAR}]]>
+			</if>
+			<if test="where.goodsIdPic != null and where.goodsIdPic != ''">
+			<![CDATA[AND goods_id_pic = #{where.goodsIdPic, jdbcType=CHAR}]]>
+			</if>
+			<if test="where.goodsSpecDetailId != null">
+			<![CDATA[AND goods_spec_detail_id = #{where.goodsSpecDetailId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="where.goodsSpec != null and where.goodsSpec != ''">
+			<![CDATA[AND goods_spec = #{where.goodsSpec, jdbcType=CHAR}]]>
+			</if>
+			<if test="where.supplierId != null">
+			<![CDATA[AND supplier_id = #{where.supplierId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="where.supplierIdName != null and where.supplierIdName != ''">
+			<![CDATA[AND supplier_id_name = #{where.supplierIdName, jdbcType=CHAR}]]>
+			</if>
+			<if test="where.supplierIdTel != null and where.supplierIdTel != ''">
+			<![CDATA[AND supplier_id_tel = #{where.supplierIdTel, jdbcType=CHAR}]]>
+			</if>
+			<if test="where.isWholesale != null">
+			<![CDATA[AND is_wholesale = #{where.isWholesale, jdbcType=TINYINT}]]>
+			</if>
+			<if test="where.wholesalePrice != null">
+			<![CDATA[AND wholesale_price = #{where.wholesalePrice, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="where.orderUserIp != null and where.orderUserIp != ''">
+			<![CDATA[AND order_user_ip = #{where.orderUserIp, jdbcType=CHAR}]]>
+			</if>
+			<if test="where.evaluateStatus != null">
+			<![CDATA[AND evaluate_status = #{where.evaluateStatus, jdbcType=TINYINT}]]>
+			</if>
+			<if test="where.lastOrderStatus != null">
+			<![CDATA[AND last_order_status = #{where.lastOrderStatus, jdbcType=TINYINT}]]>
+			</if>
+			<if test="where.orderSource != null">
+			<![CDATA[AND order_source = #{where.orderSource, jdbcType=TINYINT}]]>
+			</if>
+			<![CDATA[AND del_mark = '1']]>
+		</where>
+	</update>
+
+	<!-- 根据主键更新有值数据 -->
+	<update id="updateActiveById" parameterType="Map">
+		<![CDATA[UPDATE t_order_detail]]>
+		<set>
+			<if test="orderDetail.updateUser != null">
+			<![CDATA[update_user = #{orderDetail.updateUser, jdbcType=BIGINT},]]>
+			</if>
+			<if test="orderDetail.updateTime != null">
+			<![CDATA[update_time = #{orderDetail.updateTime, jdbcType=TIMESTAMP},]]>
+			</if>
+			<if test="orderDetail.delMark != null">
+			<![CDATA[del_mark = #{orderDetail.delMark, jdbcType=TINYINT},]]>
+			</if>
+			<if test="orderDetail.addTime != null">
+			<![CDATA[add_time = #{orderDetail.addTime, jdbcType=TIMESTAMP},]]>
+			</if>
+			<if test="orderDetail.confirmTime != null">
+			<![CDATA[confirm_time = #{orderDetail.confirmTime, jdbcType=TIMESTAMP},]]>
+			</if>
+			<if test="orderDetail.orderExpressId != null">
+			<![CDATA[order_express_id = #{orderDetail.orderExpressId, jdbcType=BIGINT},]]>
+			</if>
+			<if test="orderDetail.orderSupplierId != null">
+			<![CDATA[order_supplier_id = #{orderDetail.orderSupplierId, jdbcType=BIGINT},]]>
+			</if>
+			<if test="orderDetail.orderVirtualId != null">
+			<![CDATA[order_virtual_id = #{orderDetail.orderVirtualId, jdbcType=BIGINT},]]>
+			</if>
+			<if test="orderDetail.orderNo != null and orderDetail.orderNo != ''">
+			<![CDATA[order_no = #{orderDetail.orderNo, jdbcType=CHAR},]]>
+			</if>
+			<if test="orderDetail.orderStatus != null">
+			<![CDATA[order_status = #{orderDetail.orderStatus, jdbcType=TINYINT},]]>
+			</if>
+			<if test="orderDetail.payType != null and orderDetail.payType != ''">
+			<![CDATA[pay_type = #{orderDetail.payType, jdbcType=CHAR},]]>
+			</if>
+			<if test="orderDetail.totalPrice != null">
+			<![CDATA[total_price = #{orderDetail.totalPrice, jdbcType=DECIMAL},]]>
+			</if>
+			<if test="orderDetail.couponMoney != null">
+			<![CDATA[coupon_money = #{orderDetail.couponMoney, jdbcType=DECIMAL},]]>
+			</if>
+			<if test="orderDetail.goldMoney != null">
+			<![CDATA[gold_money = #{orderDetail.goldMoney, jdbcType=DECIMAL},]]>
+			</if>
+			<if test="orderDetail.activationMoney != null">
+			<![CDATA[activation_money = #{orderDetail.activationMoney, jdbcType=DECIMAL},]]>
+			</if>
+			<if test="orderDetail.depositMoney != null">
+			<![CDATA[deposit_money = #{orderDetail.depositMoney, jdbcType=DECIMAL},]]>
+			</if>
+			<if test="orderDetail.payMoney != null">
+			<![CDATA[pay_money = #{orderDetail.payMoney, jdbcType=DECIMAL},]]>
+			</if>
+			<if test="orderDetail.freightMoney != null">
+			<![CDATA[freight_money = #{orderDetail.freightMoney, jdbcType=DECIMAL},]]>
+			</if>
+			<if test="orderDetail.freightTemplateId != null">
+			<![CDATA[freight_template_id = #{orderDetail.freightTemplateId, jdbcType=BIGINT},]]>
+			</if>
+			<if test="orderDetail.expressWay != null">
+			<![CDATA[express_way = #{orderDetail.expressWay, jdbcType=TINYINT},]]>
+			</if>
+			<if test="orderDetail.couponId != null">
+			<![CDATA[coupon_id = #{orderDetail.couponId, jdbcType=BIGINT},]]>
+			</if>
+			<if test="orderDetail.userId != null">
+			<![CDATA[user_id = #{orderDetail.userId, jdbcType=BIGINT},]]>
+			</if>
+			<if test="orderDetail.goodsCount != null">
+			<![CDATA[goods_count = #{orderDetail.goodsCount, jdbcType=INTEGER},]]>
+			</if>
+			<if test="orderDetail.goodsId != null">
+			<![CDATA[goods_id = #{orderDetail.goodsId, jdbcType=BIGINT},]]>
+			</if>
+			<if test="orderDetail.goodsIdPrice != null">
+			<![CDATA[goods_id_price = #{orderDetail.goodsIdPrice, jdbcType=DECIMAL},]]>
+			</if>
+			<if test="orderDetail.goodsIdDivideprofitPrice != null">
+			<![CDATA[goods_id_divideprofit_price = #{orderDetail.goodsIdDivideprofitPrice, jdbcType=DECIMAL},]]>
+			</if>
+			<if test="orderDetail.goodsIdDiscount != null">
+			<![CDATA[goods_id_discount = #{orderDetail.goodsIdDiscount, jdbcType=DECIMAL},]]>
+			</if>
+			<if test="orderDetail.goodsIdName != null and orderDetail.goodsIdName != ''">
+			<![CDATA[goods_id_name = #{orderDetail.goodsIdName, jdbcType=CHAR},]]>
+			</if>
+			<if test="orderDetail.goodsIdPic != null and orderDetail.goodsIdPic != ''">
+			<![CDATA[goods_id_pic = #{orderDetail.goodsIdPic, jdbcType=CHAR},]]>
+			</if>
+			<if test="orderDetail.goodsSpecDetailId != null">
+			<![CDATA[goods_spec_detail_id = #{orderDetail.goodsSpecDetailId, jdbcType=BIGINT},]]>
+			</if>
+			<if test="orderDetail.goodsSpec != null and orderDetail.goodsSpec != ''">
+			<![CDATA[goods_spec = #{orderDetail.goodsSpec, jdbcType=CHAR},]]>
+			</if>
+			<if test="orderDetail.supplierId != null">
+			<![CDATA[supplier_id = #{orderDetail.supplierId, jdbcType=BIGINT},]]>
+			</if>
+			<if test="orderDetail.supplierIdName != null and orderDetail.supplierIdName != ''">
+			<![CDATA[supplier_id_name = #{orderDetail.supplierIdName, jdbcType=CHAR},]]>
+			</if>
+			<if test="orderDetail.supplierIdTel != null and orderDetail.supplierIdTel != ''">
+			<![CDATA[supplier_id_tel = #{orderDetail.supplierIdTel, jdbcType=CHAR},]]>
+			</if>
+			<if test="orderDetail.isWholesale != null">
+			<![CDATA[is_wholesale = #{orderDetail.isWholesale, jdbcType=TINYINT},]]>
+			</if>
+			<if test="orderDetail.wholesalePrice != null">
+			<![CDATA[wholesale_price = #{orderDetail.wholesalePrice, jdbcType=DECIMAL},]]>
+			</if>
+			<if test="orderDetail.orderUserIp != null and orderDetail.orderUserIp != ''">
+			<![CDATA[order_user_ip = #{orderDetail.orderUserIp, jdbcType=CHAR},]]>
+			</if>
+			<if test="orderDetail.evaluateStatus != null">
+			<![CDATA[evaluate_status = #{orderDetail.evaluateStatus, jdbcType=TINYINT},]]>
+			</if>
+			<if test="orderDetail.lastOrderStatus != null">
+			<![CDATA[last_order_status = #{orderDetail.lastOrderStatus, jdbcType=TINYINT},]]>
+			</if>
+			<if test="orderDetail.orderSource != null">
+			<![CDATA[order_source = #{orderDetail.orderSource, jdbcType=TINYINT},]]>
+			</if>
+		</set>
+		<where>
+		<![CDATA[AND pk_id = #{orderDetailId, jdbcType=BIGINT}]]>
+		</where>
+	</update>
+
+	<!-- 查询列表 -->
+	<select id="select" parameterType="Map" resultMap="OrderDetail">
+		<![CDATA[
+		SELECT
+			t.pk_id AS pk_id,
+			t.create_user AS create_user,
+			t.create_time AS create_time,
+			t.update_user AS update_user,
+			t.update_time AS update_time,
+			t.del_mark AS del_mark,
+			t.add_time AS add_time,
+			t.confirm_time AS confirm_time,
+			t.order_express_id AS order_express_id,
+			t.order_supplier_id AS order_supplier_id,
+			t.order_virtual_id AS order_virtual_id,
+			t.order_no AS order_no,
+			t.order_status AS order_status,
+			t.pay_type AS pay_type,
+			t.total_price AS total_price,
+			t.coupon_money AS coupon_money,
+			t.gold_money AS gold_money,
+			t.activation_money AS activation_money,
+			t.deposit_money AS deposit_money,
+			t.pay_money AS pay_money,
+			t.freight_money AS freight_money,
+			t.freight_template_id AS freight_template_id,
+			t.express_way AS express_way,
+			t.coupon_id AS coupon_id,
+			t.user_id AS user_id,
+			t.goods_count AS goods_count,
+			t.goods_id AS goods_id,
+			t.goods_id_price AS goods_id_price,
+			t.goods_id_divideprofit_price AS goods_id_divideprofit_price,
+			t.goods_id_discount AS goods_id_discount,
+			t.goods_id_name AS goods_id_name,
+			t.goods_id_pic AS goods_id_pic,
+			t.goods_spec_detail_id AS goods_spec_detail_id,
+			t.goods_spec AS goods_spec,
+			t.supplier_id AS supplier_id,
+			t.supplier_id_name AS supplier_id_name,
+			t.supplier_id_tel AS supplier_id_tel,
+			t.is_wholesale AS is_wholesale,
+			t.wholesale_price AS wholesale_price,
+			t.order_user_ip AS order_user_ip,
+			t.evaluate_status AS evaluate_status,
+			t.last_order_status AS last_order_status,
+			t.order_source AS order_source
+		FROM
+			t_order_detail t
+		]]>
+		<where>
+			<if test="orderDetail.pkId != null and orderDetail.pkId > 0">
+			<![CDATA[AND t.pk_id = #{orderDetail.pkId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="orderDetail.createUser != null and orderDetail.createUser > 0">
+			<![CDATA[AND t.create_user = #{orderDetail.createUser, jdbcType=BIGINT}]]>
+			</if>
+			<if test="orderDetail.createTime != null">
+			<![CDATA[AND t.create_time = #{orderDetail.createTime, jdbcType=TIMESTAMP}]]>
+			</if>
+			<if test="orderDetail.updateUser != null and orderDetail.updateUser > 0">
+			<![CDATA[AND t.update_user = #{orderDetail.updateUser, jdbcType=BIGINT}]]>
+			</if>
+			<if test="orderDetail.updateTime != null">
+			<![CDATA[AND t.update_time = #{orderDetail.updateTime, jdbcType=TIMESTAMP}]]>
+			</if>
+			<if test="orderDetail.delMark != null and orderDetail.delMark > 0">
+			<![CDATA[AND t.del_mark = #{orderDetail.delMark, jdbcType=TINYINT}]]>
+			</if>
+			<if test="orderDetail.addTime != null">
+			<![CDATA[AND t.add_time = #{orderDetail.addTime, jdbcType=TIMESTAMP}]]>
+			</if>
+			<if test="orderDetail.confirmTime != null">
+			<![CDATA[AND t.confirm_time = #{orderDetail.confirmTime, jdbcType=TIMESTAMP}]]>
+			</if>
+			<if test="orderDetail.orderExpressId != null and orderDetail.orderExpressId > 0">
+			<![CDATA[AND t.order_express_id = #{orderDetail.orderExpressId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="orderDetail.orderSupplierId != null and orderDetail.orderSupplierId > 0">
+			<![CDATA[AND t.order_supplier_id = #{orderDetail.orderSupplierId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="orderDetail.orderVirtualId != null and orderDetail.orderVirtualId > 0">
+			<![CDATA[AND t.order_virtual_id = #{orderDetail.orderVirtualId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="orderDetail.orderNo != null and orderDetail.orderNo != ''">
+			<![CDATA[AND t.order_no = #{orderDetail.orderNo, jdbcType=CHAR}]]>
+			</if>
+			<if test="orderDetail.orderStatus != null and orderDetail.orderStatus > 0">
+			<![CDATA[AND t.order_status = #{orderDetail.orderStatus, jdbcType=TINYINT}]]>
+			</if>
+			<if test="orderDetail.payType != null and orderDetail.payType != ''">
+			<![CDATA[AND t.pay_type = #{orderDetail.payType, jdbcType=CHAR}]]>
+			</if>
+			<if test="orderDetail.totalPrice != null and orderDetail.totalPrice > 0">
+			<![CDATA[AND t.total_price = #{orderDetail.totalPrice, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="orderDetail.couponMoney != null and orderDetail.couponMoney > 0">
+			<![CDATA[AND t.coupon_money = #{orderDetail.couponMoney, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="orderDetail.goldMoney != null and orderDetail.goldMoney > 0">
+			<![CDATA[AND t.gold_money = #{orderDetail.goldMoney, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="orderDetail.activationMoney != null and orderDetail.activationMoney > 0">
+			<![CDATA[AND t.activation_money = #{orderDetail.activationMoney, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="orderDetail.depositMoney != null and orderDetail.depositMoney > 0">
+			<![CDATA[AND t.deposit_money = #{orderDetail.depositMoney, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="orderDetail.payMoney != null and orderDetail.payMoney > 0">
+			<![CDATA[AND t.pay_money = #{orderDetail.payMoney, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="orderDetail.freightMoney != null and orderDetail.freightMoney > 0">
+			<![CDATA[AND t.freight_money = #{orderDetail.freightMoney, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="orderDetail.freightTemplateId != null and orderDetail.freightTemplateId > 0">
+			<![CDATA[AND t.freight_template_id = #{orderDetail.freightTemplateId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="orderDetail.expressWay != null and orderDetail.expressWay > 0">
+			<![CDATA[AND t.express_way = #{orderDetail.expressWay, jdbcType=TINYINT}]]>
+			</if>
+			<if test="orderDetail.couponId != null and orderDetail.couponId > 0">
+			<![CDATA[AND t.coupon_id = #{orderDetail.couponId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="orderDetail.userId != null and orderDetail.userId > 0">
+			<![CDATA[AND t.user_id = #{orderDetail.userId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="orderDetail.goodsCount != null and orderDetail.goodsCount > 0">
+			<![CDATA[AND t.goods_count = #{orderDetail.goodsCount, jdbcType=INTEGER}]]>
+			</if>
+			<if test="orderDetail.goodsId != null and orderDetail.goodsId > 0">
+			<![CDATA[AND t.goods_id = #{orderDetail.goodsId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="orderDetail.goodsIdPrice != null and orderDetail.goodsIdPrice > 0">
+			<![CDATA[AND t.goods_id_price = #{orderDetail.goodsIdPrice, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="orderDetail.goodsIdDivideprofitPrice != null and orderDetail.goodsIdDivideprofitPrice > 0">
+			<![CDATA[AND t.goods_id_divideprofit_price = #{orderDetail.goodsIdDivideprofitPrice, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="orderDetail.goodsIdDiscount != null and orderDetail.goodsIdDiscount > 0">
+			<![CDATA[AND t.goods_id_discount = #{orderDetail.goodsIdDiscount, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="orderDetail.goodsIdName != null and orderDetail.goodsIdName != ''">
+			<![CDATA[AND t.goods_id_name = #{orderDetail.goodsIdName, jdbcType=CHAR}]]>
+			</if>
+			<if test="orderDetail.goodsIdPic != null and orderDetail.goodsIdPic != ''">
+			<![CDATA[AND t.goods_id_pic = #{orderDetail.goodsIdPic, jdbcType=CHAR}]]>
+			</if>
+			<if test="orderDetail.goodsSpecDetailId != null and orderDetail.goodsSpecDetailId > 0">
+			<![CDATA[AND t.goods_spec_detail_id = #{orderDetail.goodsSpecDetailId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="orderDetail.goodsSpec != null and orderDetail.goodsSpec != ''">
+			<![CDATA[AND t.goods_spec = #{orderDetail.goodsSpec, jdbcType=CHAR}]]>
+			</if>
+			<if test="orderDetail.supplierId != null and orderDetail.supplierId > 0">
+			<![CDATA[AND t.supplier_id = #{orderDetail.supplierId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="orderDetail.supplierIdName != null and orderDetail.supplierIdName != ''">
+			<![CDATA[AND t.supplier_id_name = #{orderDetail.supplierIdName, jdbcType=CHAR}]]>
+			</if>
+			<if test="orderDetail.supplierIdTel != null and orderDetail.supplierIdTel != ''">
+			<![CDATA[AND t.supplier_id_tel = #{orderDetail.supplierIdTel, jdbcType=CHAR}]]>
+			</if>
+			<if test="orderDetail.isWholesale != null and orderDetail.isWholesale > 0">
+			<![CDATA[AND t.is_wholesale = #{orderDetail.isWholesale, jdbcType=TINYINT}]]>
+			</if>
+			<if test="orderDetail.wholesalePrice != null and orderDetail.wholesalePrice > 0">
+			<![CDATA[AND t.wholesale_price = #{orderDetail.wholesalePrice, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="orderDetail.orderUserIp != null and orderDetail.orderUserIp != ''">
+			<![CDATA[AND t.order_user_ip = #{orderDetail.orderUserIp, jdbcType=CHAR}]]>
+			</if>
+			<if test="orderDetail.evaluateStatus != null and orderDetail.evaluateStatus > 0">
+			<![CDATA[AND t.evaluate_status = #{orderDetail.evaluateStatus, jdbcType=TINYINT}]]>
+			</if>
+			<if test="orderDetail.lastOrderStatus != null and orderDetail.lastOrderStatus > 0">
+			<![CDATA[AND t.last_order_status = #{orderDetail.lastOrderStatus, jdbcType=TINYINT}]]>
+			</if>
+			<if test="orderDetail.orderSource != null and orderDetail.orderSource > 0">
+			<![CDATA[AND t.order_source = #{orderDetail.orderSource, jdbcType=TINYINT}]]>
+			</if>
+			<![CDATA[AND t.del_mark = '1']]>
+		</where>
+	</select>
+
+	<!-- 根据主键查询 -->
+	<select id="selectById" parameterType="Map" resultMap="OrderDetail">
+		<![CDATA[
+		SELECT
+			t.pk_id AS pk_id,
+			t.create_user AS create_user,
+			t.create_time AS create_time,
+			t.update_user AS update_user,
+			t.update_time AS update_time,
+			t.del_mark AS del_mark,
+			t.add_time AS add_time,
+			t.confirm_time AS confirm_time,
+			t.order_express_id AS order_express_id,
+			t.order_supplier_id AS order_supplier_id,
+			t.order_virtual_id AS order_virtual_id,
+			t.order_no AS order_no,
+			t.order_status AS order_status,
+			t.pay_type AS pay_type,
+			t.total_price AS total_price,
+			t.coupon_money AS coupon_money,
+			t.gold_money AS gold_money,
+			t.activation_money AS activation_money,
+			t.deposit_money AS deposit_money,
+			t.pay_money AS pay_money,
+			t.freight_money AS freight_money,
+			t.freight_template_id AS freight_template_id,
+			t.express_way AS express_way,
+			t.coupon_id AS coupon_id,
+			t.user_id AS user_id,
+			t.goods_count AS goods_count,
+			t.goods_id AS goods_id,
+			t.goods_id_price AS goods_id_price,
+			t.goods_id_divideprofit_price AS goods_id_divideprofit_price,
+			t.goods_id_discount AS goods_id_discount,
+			t.goods_id_name AS goods_id_name,
+			t.goods_id_pic AS goods_id_pic,
+			t.goods_spec_detail_id AS goods_spec_detail_id,
+			t.goods_spec AS goods_spec,
+			t.supplier_id AS supplier_id,
+			t.supplier_id_name AS supplier_id_name,
+			t.supplier_id_tel AS supplier_id_tel,
+			t.is_wholesale AS is_wholesale,
+			t.wholesale_price AS wholesale_price,
+			t.order_user_ip AS order_user_ip,
+			t.evaluate_status AS evaluate_status,
+			t.last_order_status AS last_order_status,
+			t.order_source AS order_source,
+			t.goods_id_deal_point,
+			t.profit_ratio,
+			info.local_flag as local_flag
+		FROM
+			t_order_detail t
+		LEFT JOIN 
+			t_goods_info info
+		 ON 
+		 	info.pk_id=t.goods_id
+		]]>
+		<where>
+		<![CDATA[AND t.pk_id = #{orderDetailId, jdbcType=BIGINT}]]>
+		<!-- 在售商品标识 -->
+<!-- 		<![CDATA[AND info.status_flag=1]]> -->
+		</where>
+	</select>
+	<!-- 根据主键查询 -->
+	<select id="selectByOrderVirtualId" parameterType="Map" resultMap="OrderDetail">
+		<![CDATA[
+		SELECT
+			t.pk_id AS pk_id,
+			t.user_id AS user_id,
+			t.total_price AS total_price,
+			t.freight_money AS freight_money,
+			t.goods_count AS goods_count,
+			t.goods_id_price AS goods_id_price,
+			t.pay_money AS pay_money,
+			t.vip_goods_order_flag AS vip_goods_order_flag,
+			t.discount_rate AS discount_rate,
+			t.discount_price AS discount_price
+		FROM
+			t_order_detail t
+		]]>
+		<where>
+		<if test="orderVirtualId != null and orderVirtualId != '' ">
+			<![CDATA[AND t.order_virtual_id = #{orderVirtualId, jdbcType=BIGINT}]]>
+		</if>
+		<if test="vipGoodsOrderFlag != null and vipGoodsOrderFlag != '' ">
+			<![CDATA[AND t.vip_goods_order_flag = #{vipGoodsOrderFlag, jdbcType=TINYINT}]]>
+		</if>
+		</where>
+	</select>
+
+	<!-- 按条件删除 -->
+	<update id="delete" parameterType="Map">
+		<![CDATA[
+		DELETE
+		FROM
+			t_order_detail
+		]]>
+		<set>
+			<![CDATA[del_mark = '0',]]>
+		</set>
+		<where>
+			<if test="where.pkId != null">
+			<![CDATA[AND pk_id = #{where.pkId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="where.createUser != null">
+			<![CDATA[AND create_user = #{where.createUser, jdbcType=BIGINT}]]>
+			</if>
+			<if test="where.createTime != null">
+			<![CDATA[AND create_time = #{where.createTime, jdbcType=TIMESTAMP}]]>
+			</if>
+			<if test="where.updateUser != null">
+			<![CDATA[AND update_user = #{where.updateUser, jdbcType=BIGINT}]]>
+			</if>
+			<if test="where.updateTime != null">
+			<![CDATA[AND update_time = #{where.updateTime, jdbcType=TIMESTAMP}]]>
+			</if>
+			<if test="where.delMark != null">
+			<![CDATA[AND del_mark = #{where.delMark, jdbcType=TINYINT}]]>
+			</if>
+			<if test="where.addTime != null">
+			<![CDATA[AND add_time = #{where.addTime, jdbcType=TIMESTAMP}]]>
+			</if>
+			<if test="where.confirmTime != null">
+			<![CDATA[AND confirm_time = #{where.confirmTime, jdbcType=TIMESTAMP}]]>
+			</if>
+			<if test="where.orderExpressId != null">
+			<![CDATA[AND order_express_id = #{where.orderExpressId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="where.orderSupplierId != null">
+			<![CDATA[AND order_supplier_id = #{where.orderSupplierId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="where.orderVirtualId != null">
+			<![CDATA[AND order_virtual_id = #{where.orderVirtualId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="where.orderNo != null and where.orderNo != ''">
+			<![CDATA[AND order_no = #{where.orderNo, jdbcType=CHAR}]]>
+			</if>
+			<if test="where.orderStatus != null">
+			<![CDATA[AND order_status = #{where.orderStatus, jdbcType=TINYINT}]]>
+			</if>
+			<if test="where.payType != null and where.payType != ''">
+			<![CDATA[AND pay_type = #{where.payType, jdbcType=CHAR}]]>
+			</if>
+			<if test="where.totalPrice != null">
+			<![CDATA[AND total_price = #{where.totalPrice, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="where.couponMoney != null">
+			<![CDATA[AND coupon_money = #{where.couponMoney, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="where.goldMoney != null">
+			<![CDATA[AND gold_money = #{where.goldMoney, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="where.activationMoney != null">
+			<![CDATA[AND activation_money = #{where.activationMoney, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="where.depositMoney != null">
+			<![CDATA[AND deposit_money = #{where.depositMoney, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="where.payMoney != null">
+			<![CDATA[AND pay_money = #{where.payMoney, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="where.freightMoney != null">
+			<![CDATA[AND freight_money = #{where.freightMoney, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="where.freightTemplateId != null">
+			<![CDATA[AND freight_template_id = #{where.freightTemplateId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="where.expressWay != null">
+			<![CDATA[AND express_way = #{where.expressWay, jdbcType=TINYINT}]]>
+			</if>
+			<if test="where.couponId != null">
+			<![CDATA[AND coupon_id = #{where.couponId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="where.userId != null">
+			<![CDATA[AND user_id = #{where.userId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="where.goodsCount != null">
+			<![CDATA[AND goods_count = #{where.goodsCount, jdbcType=INTEGER}]]>
+			</if>
+			<if test="where.goodsId != null">
+			<![CDATA[AND goods_id = #{where.goodsId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="where.goodsIdPrice != null">
+			<![CDATA[AND goods_id_price = #{where.goodsIdPrice, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="where.goodsIdDivideprofitPrice != null">
+			<![CDATA[AND goods_id_divideprofit_price = #{where.goodsIdDivideprofitPrice, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="where.goodsIdDiscount != null">
+			<![CDATA[AND goods_id_discount = #{where.goodsIdDiscount, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="where.goodsIdName != null and where.goodsIdName != ''">
+			<![CDATA[AND goods_id_name = #{where.goodsIdName, jdbcType=CHAR}]]>
+			</if>
+			<if test="where.goodsIdPic != null and where.goodsIdPic != ''">
+			<![CDATA[AND goods_id_pic = #{where.goodsIdPic, jdbcType=CHAR}]]>
+			</if>
+			<if test="where.goodsSpecDetailId != null">
+			<![CDATA[AND goods_spec_detail_id = #{where.goodsSpecDetailId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="where.goodsSpec != null and where.goodsSpec != ''">
+			<![CDATA[AND goods_spec = #{where.goodsSpec, jdbcType=CHAR}]]>
+			</if>
+			<if test="where.supplierId != null">
+			<![CDATA[AND supplier_id = #{where.supplierId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="where.supplierIdName != null and where.supplierIdName != ''">
+			<![CDATA[AND supplier_id_name = #{where.supplierIdName, jdbcType=CHAR}]]>
+			</if>
+			<if test="where.supplierIdTel != null and where.supplierIdTel != ''">
+			<![CDATA[AND supplier_id_tel = #{where.supplierIdTel, jdbcType=CHAR}]]>
+			</if>
+			<if test="where.isWholesale != null">
+			<![CDATA[AND is_wholesale = #{where.isWholesale, jdbcType=TINYINT}]]>
+			</if>
+			<if test="where.wholesalePrice != null">
+			<![CDATA[AND wholesale_price = #{where.wholesalePrice, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="where.orderUserIp != null and where.orderUserIp != ''">
+			<![CDATA[AND order_user_ip = #{where.orderUserIp, jdbcType=CHAR}]]>
+			</if>
+			<if test="where.evaluateStatus != null">
+			<![CDATA[AND evaluate_status = #{where.evaluateStatus, jdbcType=TINYINT}]]>
+			</if>
+			<if test="where.lastOrderStatus != null">
+			<![CDATA[AND last_order_status = #{where.lastOrderStatus, jdbcType=TINYINT}]]>
+			</if>
+			<if test="where.orderSource != null">
+			<![CDATA[AND order_source = #{where.orderSource, jdbcType=TINYINT}]]>
+			</if>
+			<![CDATA[AND del_mark = '1']]>
+		</where>
+	</update>
+	
+	<!-- 按主键删除 -->
+	<update id="deleteById" parameterType="Map">
+		<![CDATA[
+		DELETE
+		FROM
+			t_order_detail
+		]]>
+		<set>
+			<![CDATA[del_mark = '0',]]>
+		</set>
+		<where>
+		<![CDATA[AND pk_id = #{orderDetailId, jdbcType=BIGINT}]]>
+		<![CDATA[AND del_mark = '1']]>
+		</where>
+	</update>
+	
+</mapper>

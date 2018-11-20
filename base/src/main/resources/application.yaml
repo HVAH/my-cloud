@@ -1,0 +1,2 @@
+modou.security.jwt:
+  tokenSigningPublicKey: public.key

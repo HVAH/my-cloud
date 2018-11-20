@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mall.order.repository.GoodsInfoMapper">
+	<resultMap id="GoodsInfo" type="com.mall.order.domain.GoodsInfo">
+		<id property="id" javaType="Long" column="id" jdbcType="BIGINT" />
+		<result property="name" javaType="String" column="name" jdbcType="VARCHAR" />
+		<result property="title" javaType="String" column="title" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<!-- 插入数据 -->
+	<insert id="insert" parameterType="Map">
+		<![CDATA[
+		INSERT INTO goods_info (
+			id,
+			name,
+			title
+		)
+		VALUES
+			(
+				#{goodsInfo.id, jdbcType = BIGINT},
+				#{goodsInfo.name, jdbcType = VARCHAR},
+				#{goodsInfo.title, jdbcType = VARCHAR}
+			)
+		]]>
+	</insert>
+	
+	<!-- 更新数据 -->
+	<update id="update" parameterType="Map">
+		<![CDATA[UPDATE goods_info]]>
+		<set>
+		<![CDATA[id = #{goodsInfo.id},]]>
+		<![CDATA[name = #{goodsInfo.name},]]>
+		<![CDATA[title = #{goodsInfo.title},]]>
+		</set>
+		<where>
+			<if test="where.id != null">
+			<![CDATA[AND id = #{where.id, jdbcType=BIGINT}]]>
+			</if>
+			<if test="where.name != null and where.name != ''">
+			<![CDATA[AND name = #{where.name, jdbcType=VARCHAR}]]>
+			</if>
+			<if test="where.title != null and where.title != ''">
+			<![CDATA[AND title = #{where.title, jdbcType=VARCHAR}]]>
+			</if>
+			<![CDATA[AND del_mark = '1']]>
+		</where>
+	</update>
+
+	<!-- 根据主键更新 -->
+	<update id="updateById" parameterType="Map">
+		<![CDATA[UPDATE goods_info]]>
+		<set>
+		<![CDATA[id = #{goodsInfo.id},]]>
+		<![CDATA[name = #{goodsInfo.name},]]>
+		<![CDATA[title = #{goodsInfo.title},]]>
+		</set>
+		<where>
+		<![CDATA[AND id = #{goodsInfoId, jdbcType=BIGINT}]]>
+		</where>
+	</update>
+	
+	<!-- 更新有值数据 -->
+	<update id="updateActive" parameterType="Map">
+		<![CDATA[UPDATE goods_info]]>
+		<set>
+			<if test="goodsInfo.id != null">
+			<![CDATA[id = #{goodsInfo.id, jdbcType=BIGINT},]]>
+			</if>
+			<if test="goodsInfo.name != null and goodsInfo.name != ''">
+			<![CDATA[name = #{goodsInfo.name, jdbcType=VARCHAR},]]>
+			</if>
+			<if test="goodsInfo.title != null and goodsInfo.title != ''">
+			<![CDATA[title = #{goodsInfo.title, jdbcType=VARCHAR},]]>
+			</if>
+		</set>
+		<where>
+			<if test="where.id != null">
+			<![CDATA[AND id = #{where.id, jdbcType=BIGINT}]]>
+			</if>
+			<if test="where.name != null and where.name != ''">
+			<![CDATA[AND name = #{where.name, jdbcType=VARCHAR}]]>
+			</if>
+			<if test="where.title != null and where.title != ''">
+			<![CDATA[AND title = #{where.title, jdbcType=VARCHAR}]]>
+			</if>
+			<![CDATA[AND del_mark = '1']]>
+		</where>
+	</update>
+
+	<!-- 根据主键更新有值数据 -->
+	<update id="updateActiveById" parameterType="Map">
+		<![CDATA[UPDATE goods_info]]>
+		<set>
+			<if test="goodsInfo.id != null">
+			<![CDATA[id = #{goodsInfo.id, jdbcType=BIGINT},]]>
+			</if>
+			<if test="goodsInfo.name != null and goodsInfo.name != ''">
+			<![CDATA[name = #{goodsInfo.name, jdbcType=VARCHAR},]]>
+			</if>
+			<if test="goodsInfo.title != null and goodsInfo.title != ''">
+			<![CDATA[title = #{goodsInfo.title, jdbcType=VARCHAR},]]>
+			</if>
+		</set>
+		<where>
+		<![CDATA[AND id = #{goodsInfoId, jdbcType=BIGINT}]]>
+		</where>
+	</update>
+
+	<!-- 查询列表 -->
+	<select id="select" parameterType="Map" resultMap="GoodsInfo">
+		<![CDATA[
+		SELECT
+			t.id AS id,
+			t.name AS name,
+			t.title AS title
+		FROM
+			goods_info t
+		]]>
+		<where>
+			<if test="goodsInfo.id != null and goodsInfo.id > 0">
+			<![CDATA[AND t.id = #{goodsInfo.id, jdbcType=BIGINT}]]>
+			</if>
+			<if test="goodsInfo.name != null and goodsInfo.name != ''">
+			<![CDATA[AND t.name = #{goodsInfo.name, jdbcType=VARCHAR}]]>
+			</if>
+			<if test="goodsInfo.title != null and goodsInfo.title != ''">
+			<![CDATA[AND t.title = #{goodsInfo.title, jdbcType=VARCHAR}]]>
+			</if>
+		</where>
+	</select>
+
+	<!-- 根据主键查询 -->
+	<select id="selectById" parameterType="Map" resultMap="GoodsInfo">
+		<![CDATA[
+		SELECT
+			t.id AS id,
+			t.name AS name,
+			t.title AS title
+		FROM
+			goods_info t
+		]]>
+		<where>
+		<![CDATA[AND t.id = #{goodsInfoId, jdbcType=BIGINT}]]>
+		</where>
+	</select>
+
+	<!-- 根据主键集合查询 -->
+	<select id="listGodosInfoByIds" parameterType="Map" resultMap="GoodsInfo">
+		<![CDATA[
+		SELECT
+			t.id AS id,
+			t.name AS name,
+			t.title AS title
+		FROM
+			goods_info t
+		]]>
+		<where>
+			<![CDATA[AND t.id IN ]]>
+			<foreach item="id" index="index" collection="ids" open="(" separator="," close=")">
+				#{id}
+			</foreach>
+		</where>
+	</select>
+
+	<!-- 按条件删除 -->
+	<update id="delete" parameterType="Map">
+		<![CDATA[
+		DELETE
+		FROM
+			goods_info
+		]]>
+		<where>
+			<if test="where.id != null">
+			<![CDATA[AND id = #{where.id, jdbcType=BIGINT}]]>
+			</if>
+			<if test="where.name != null and where.name != ''">
+			<![CDATA[AND name = #{where.name, jdbcType=VARCHAR}]]>
+			</if>
+			<if test="where.title != null and where.title != ''">
+			<![CDATA[AND title = #{where.title, jdbcType=VARCHAR}]]>
+			</if>
+			<![CDATA[AND del_mark = '1']]>
+		</where>
+	</update>
+	
+	<!-- 按主键删除 -->
+	<update id="deleteById" parameterType="Map">
+		<![CDATA[
+		DELETE
+		FROM
+			goods_info
+		]]>
+		<where>
+		<![CDATA[AND id = #{goodsInfoId, jdbcType=BIGINT}]]>
+		<![CDATA[AND del_mark = '1']]>
+		</where>
+	</update>
+</mapper>

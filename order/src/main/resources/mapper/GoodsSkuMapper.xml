@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mall.order.repository.GoodsSkuMapper">
+	<resultMap id="GoodsSku" type="com.mall.order.domain.GoodsSku">
+		<id property="pkId" javaType="Long" column="pkId" jdbcType="BIGINT" />
+		<result property="goodsId" javaType="Long" column="goods_id" jdbcType="BIGINT" />
+		<result property="specName" javaType="String" column="spec_name" jdbcType="VARCHAR" />
+		<result property="specValue" javaType="String" column="spec_value" jdbcType="VARCHAR" />
+		<result property="specNum" javaType="Integer" column="spec_num" jdbcType="INTEGER" />
+		<result property="specPrice" javaType="BigDecimal" column="spec_price" jdbcType="DECIMAL" />
+		<result property="specNo" javaType="Integer" column="spec_no" jdbcType="INTEGER" />
+	</resultMap>
+
+
+	<!-- 插入数据 -->
+	<insert id="insert" parameterType="Map">
+		<![CDATA[
+		INSERT INTO goods_sku (
+			pkId,
+			goods_id,
+			spec_name,
+			spec_value,
+			spec_num,
+			spec_price,
+			spec_no
+		)
+		VALUES
+			(
+				#{goodsSku.pkId, jdbcType = BIGINT},
+				#{goodsSku.goodsId, jdbcType = BIGINT},
+				#{goodsSku.specName, jdbcType = VARCHAR},
+				#{goodsSku.specValue, jdbcType = VARCHAR},
+				#{goodsSku.specNum, jdbcType = INTEGER},
+				#{goodsSku.specPrice, jdbcType = DECIMAL},
+				#{goodsSku.specNo, jdbcType = INTEGER}
+			)
+		]]>
+	</insert>
+
+	<!-- 更新数据 -->
+	<update id="update" parameterType="Map">
+		<![CDATA[UPDATE goods_sku]]>
+		<set>
+			<![CDATA[pkId = #{goodsSku.pkId},]]>
+			<![CDATA[goods_id = #{goodsSku.goodsId},]]>
+			<![CDATA[spec_name = #{goodsSku.specName},]]>
+			<![CDATA[spec_value = #{goodsSku.specValue},]]>
+			<![CDATA[spec_num = #{goodsSku.specNum},]]>
+			<![CDATA[spec_price = #{goodsSku.specPrice},]]>
+			<![CDATA[spec_no = #{goodsSku.specNo},]]>
+		</set>
+		<where>
+			<if test="where.pkId != null">
+				<![CDATA[AND pkId = #{where.pkId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="where.goodsId != null">
+				<![CDATA[AND goods_id = #{where.goodsId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="where.specName != null and where.specName != ''">
+				<![CDATA[AND spec_name = #{where.specName, jdbcType=VARCHAR}]]>
+			</if>
+			<if test="where.specValue != null and where.specValue != ''">
+				<![CDATA[AND spec_value = #{where.specValue, jdbcType=VARCHAR}]]>
+			</if>
+			<if test="where.specNum != null">
+				<![CDATA[AND spec_num = #{where.specNum, jdbcType=INTEGER}]]>
+			</if>
+			<if test="where.specPrice != null">
+				<![CDATA[AND spec_price = #{where.specPrice, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="where.specNo != null">
+				<![CDATA[AND spec_no = #{where.specNo, jdbcType=INTEGER}]]>
+			</if>
+			<![CDATA[AND del_mark = '1']]>
+		</where>
+	</update>
+
+	<!-- 根据主键更新 -->
+	<update id="updateById" parameterType="Map">
+		<![CDATA[UPDATE goods_sku]]>
+		<set>
+			<![CDATA[pkId = #{goodsSku.pkId},]]>
+			<![CDATA[goods_id = #{goodsSku.goodsId},]]>
+			<![CDATA[spec_name = #{goodsSku.specName},]]>
+			<![CDATA[spec_value = #{goodsSku.specValue},]]>
+			<![CDATA[spec_num = #{goodsSku.specNum},]]>
+			<![CDATA[spec_price = #{goodsSku.specPrice},]]>
+			<![CDATA[spec_no = #{goodsSku.specNo},]]>
+		</set>
+		<where>
+			<![CDATA[AND pkId = #{goodsSkuId, jdbcType=BIGINT}]]>
+		</where>
+	</update>
+
+	<!-- 更新有值数据 -->
+	<update id="updateActive" parameterType="Map">
+		<![CDATA[UPDATE goods_sku]]>
+		<set>
+			<if test="goodsSku.pkId != null">
+				<![CDATA[pkId = #{goodsSku.pkId, jdbcType=BIGINT},]]>
+			</if>
+			<if test="goodsSku.goodsId != null">
+				<![CDATA[goods_id = #{goodsSku.goodsId, jdbcType=BIGINT},]]>
+			</if>
+			<if test="goodsSku.specName != null and goodsSku.specName != ''">
+				<![CDATA[spec_name = #{goodsSku.specName, jdbcType=VARCHAR},]]>
+			</if>
+			<if test="goodsSku.specValue != null and goodsSku.specValue != ''">
+				<![CDATA[spec_value = #{goodsSku.specValue, jdbcType=VARCHAR},]]>
+			</if>
+			<if test="goodsSku.specNum != null">
+				<![CDATA[spec_num = #{goodsSku.specNum, jdbcType=INTEGER},]]>
+			</if>
+			<if test="goodsSku.specPrice != null">
+				<![CDATA[spec_price = #{goodsSku.specPrice, jdbcType=DECIMAL},]]>
+			</if>
+			<if test="goodsSku.specNo != null">
+				<![CDATA[spec_no = #{goodsSku.specNo, jdbcType=INTEGER},]]>
+			</if>
+		</set>
+		<where>
+			<if test="where.pkId != null">
+				<![CDATA[AND pkId = #{where.pkId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="where.goodsId != null">
+				<![CDATA[AND goods_id = #{where.goodsId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="where.specName != null and where.specName != ''">
+				<![CDATA[AND spec_name = #{where.specName, jdbcType=VARCHAR}]]>
+			</if>
+			<if test="where.specValue != null and where.specValue != ''">
+				<![CDATA[AND spec_value = #{where.specValue, jdbcType=VARCHAR}]]>
+			</if>
+			<if test="where.specNum != null">
+				<![CDATA[AND spec_num = #{where.specNum, jdbcType=INTEGER}]]>
+			</if>
+			<if test="where.specPrice != null">
+				<![CDATA[AND spec_price = #{where.specPrice, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="where.specNo != null">
+				<![CDATA[AND spec_no = #{where.specNo, jdbcType=INTEGER}]]>
+			</if>
+			<![CDATA[AND del_mark = '1']]>
+		</where>
+	</update>
+
+	<!-- 根据主键更新有值数据 -->
+	<update id="updateActiveById" parameterType="Map">
+		<![CDATA[UPDATE goods_sku]]>
+		<set>
+			<if test="goodsSku.pkId != null">
+				<![CDATA[pkId = #{goodsSku.pkId, jdbcType=BIGINT},]]>
+			</if>
+			<if test="goodsSku.goodsId != null">
+				<![CDATA[goods_id = #{goodsSku.goodsId, jdbcType=BIGINT},]]>
+			</if>
+			<if test="goodsSku.specName != null and goodsSku.specName != ''">
+				<![CDATA[spec_name = #{goodsSku.specName, jdbcType=VARCHAR},]]>
+			</if>
+			<if test="goodsSku.specValue != null and goodsSku.specValue != ''">
+				<![CDATA[spec_value = #{goodsSku.specValue, jdbcType=VARCHAR},]]>
+			</if>
+			<if test="goodsSku.specNum != null">
+				<![CDATA[spec_num = #{goodsSku.specNum, jdbcType=INTEGER},]]>
+			</if>
+			<if test="goodsSku.specPrice != null">
+				<![CDATA[spec_price = #{goodsSku.specPrice, jdbcType=DECIMAL},]]>
+			</if>
+			<if test="goodsSku.specNo != null">
+				<![CDATA[spec_no = #{goodsSku.specNo, jdbcType=INTEGER},]]>
+			</if>
+		</set>
+		<where>
+			<![CDATA[AND pkId = #{goodsSkuId, jdbcType=BIGINT}]]>
+		</where>
+	</update>
+
+	<!-- 查询列表 -->
+	<select id="select" parameterType="Map" resultMap="GoodsSku">
+		<![CDATA[
+		SELECT
+			t.pkId AS pkId,
+			t.goods_id AS goods_id,
+			t.spec_name AS spec_name,
+			t.spec_value AS spec_value,
+			t.spec_num AS spec_num,
+			t.spec_price AS spec_price,
+			t.spec_no AS spec_no
+		FROM
+			goods_sku t
+		]]>
+		<where>
+			<if test="goodsSku.pkId != null and goodsSku.pkId > 0">
+				<![CDATA[AND t.pkId = #{goodsSku.pkId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="goodsSku.goodsId != null and goodsSku.goodsId > 0">
+				<![CDATA[AND t.goods_id = #{goodsSku.goodsId, jdbcType=BIGINT}]]>
+			</if>
+			<if test="goodsSku.specName != null and goodsSku.specName != ''">
+				<![CDATA[AND t.spec_name = #{goodsSku.specName, jdbcType=VARCHAR}]]>
+			</if>
+			<if test="goodsSku.specValue != null and goodsSku.specValue != ''">
+				<![CDATA[AND t.spec_value = #{goodsSku.specValue, jdbcType=VARCHAR}]]>
+			</if>
+			<if test="goodsSku.specNum != null and goodsSku.specNum > 0">
+				<![CDATA[AND t.spec_num = #{goodsSku.specNum, jdbcType=INTEGER}]]>
+			</if>
+			<if test="goodsSku.specPrice != null and goodsSku.specPrice > 0">
+				<![CDATA[AND t.spec_price = #{goodsSku.specPrice, jdbcType=DECIMAL}]]>
+			</if>
+			<if test="goodsSku.specNo != null and goodsSku.specNo > 0">
+				<![CDATA[AND t.spec_no = #{goodsSku.specNo, jdbcType=INTEGER}]]>
+			</if>
+			<![CDATA[AND t.del_mark = '1']]>
+		</where>
+	</select>
+
+	<!-- 根据主键查询 -->
+	<select id="selectById" parameterType="Map" resultMap="GoodsSku">
+		<![CDATA[
+		SELECT
+			t.pkId AS pkId,
+			t.goods_id AS goods_id,
+			t.spec_name AS spec_name,
+			t.spec_value AS spec_value,
+			t.spec_num AS spec_num,
+			t.spec_price AS spec_price,
+			t.spec_no AS spec_no
+		FROM
+			goods_sku t
+		]]>
+		<where>
+			<![CDATA[AND t.pkId = #{goodsSkuId, jdbcType=BIGINT}]]>
+		</where>
+	</select>
+
+	<!-- 根据主键集合查询 -->
+	<select id="listGoodsSkuByIds" parameterType="Map" resultMap="GoodsSku">
+		<![CDATA[
+		SELECT
+			t.pkId AS pkId,
+			t.goods_id AS goods_id,
+			t.spec_name AS spec_name,
+			t.spec_value AS spec_value,
+			t.spec_num AS spec_num,
+			t.spec_price AS spec_price,
+			t.spec_no AS spec_no
+		FROM
+			goods_sku t
+		]]>
+		<where>
+			<![CDATA[AND t.pkId IN ]]>
+			<foreach item="id" index="index" collection="skus" open="(" separator="," close=")">
+				#{id}
+			</foreach>
+		</where>
+	</select>
+
+</mapper>
