@@ -1,4 +1,4 @@
-package com.mall.base.util;
+package com.mall.base.utils;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;

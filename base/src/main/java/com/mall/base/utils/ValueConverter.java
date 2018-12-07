@@ -1,4 +1,4 @@
-package com.mall.base.util;
+package com.mall.base.utils;
 
 
 import com.mall.base.constant.RegexPattern;

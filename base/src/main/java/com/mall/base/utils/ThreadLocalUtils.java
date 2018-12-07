@@ -1,4 +1,4 @@
-package com.mall.base.util;
+package com.mall.base.utils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @Description Threadlocal 该线程当前用户信息
+ * @Description Threadlocal
  * @Author HuangJiang
  * @Date 2018/11/7 10:44
  * @Version 1.0

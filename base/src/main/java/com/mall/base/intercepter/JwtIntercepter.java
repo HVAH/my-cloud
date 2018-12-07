@@ -1,6 +1,6 @@
 package com.mall.base.intercepter;
 
-import com.mall.base.util.ThreadLocalUtils;
+import com.mall.base.utils.ThreadLocalUtils;
 import com.mall.base.security.jwt.JwtToken;
 import com.mall.base.security.jwt.JwtTokenFactory;
 import org.slf4j.Logger;

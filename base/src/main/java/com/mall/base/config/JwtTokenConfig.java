@@ -1,7 +1,7 @@
 package com.mall.base.config;
 
 import com.mall.base.security.jwt.JwtTokenFactory;
-import com.mall.base.util.RsaKeyUtil;
+import com.mall.base.utils.RsaKeyUtil;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

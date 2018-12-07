@@ -1,4 +1,4 @@
-package com.mall.base.util;
+package com.mall.base.utils;
 
 import java.io.Serializable;
 import java.lang.reflect.Type;
