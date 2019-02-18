@@ -1,6 +1,8 @@
 package com.mall.study.service;
 
+import com.mall.base.utils.StopWatch;
 import com.mall.study.domain.Order;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -15,6 +17,7 @@ import java.util.concurrent.ExecutorService;
  * @Version 1.0
  */
 @Service
+@Slf4j
 public class OrderService {
 
 	private @Resource ExecutorService executorService;

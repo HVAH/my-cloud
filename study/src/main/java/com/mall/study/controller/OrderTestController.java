@@ -1,7 +1,9 @@
 package com.mall.study.controller;
 
+import com.mall.base.utils.StopWatch;
 import com.mall.study.domain.Order;
 import com.mall.study.service.OrderService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +18,7 @@ import java.util.Random;
  * @Version 1.0
  */
 @RestController
+@Slf4j
 public class OrderTestController {
 
 	private @Resource OrderService orderService;
@@ -35,9 +38,13 @@ public class OrderTestController {
 
 	@PostMapping("/start")
 	public ResponseEntity start()throws Exception {
+		StopWatch stopWatch = new StopWatch();
+		stopWatch.start();
 		for (int i = 0; i < 10000; i++) {
 			method();
 		}
-		return ResponseEntity.ok().body("ok");
+		stopWatch.stop();
+		log.info("================= " + stopWatch.getElapsedTime());
+		return ResponseEntity.ok().body(stopWatch.getElapsedTime());
 	}
 }

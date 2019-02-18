@@ -3,7 +3,9 @@ package com.mall.pay.service.impl;
 import com.mall.pay.domain.PayInfo;
 import com.mall.pay.domain.RefundInfo;
 import com.mall.pay.payhandler.PayEcecutor;
+import com.mall.pay.service.OrderService;
 import com.mall.pay.service.PayService;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -17,10 +19,11 @@ import javax.annotation.Resource;
  * @Version 1.0
  */
 @Service
+@Slf4j
 public class PayServiceImpl implements PayService {
 
-	private final static Logger LOGGER = LoggerFactory.getLogger(PayServiceImpl.class);
 	private @Resource PayEcecutor payEcecutor;
+	private @Resource OrderService orderService;
 
 
 	@Override
@@ -29,10 +32,6 @@ public class PayServiceImpl implements PayService {
 		if (orderPaid(orderNo, orderType)) {
 			throw new RuntimeException("please dont double payment");
 		}
-
-		if (orderPaid(orderNo, orderType))
-			throw new RuntimeException("order has paid");
-
 		return payEcecutor.executePay(getOrderPayInfo(orderNo, orderType), payComp, payment);
 	}
 
@@ -67,10 +66,8 @@ public class PayServiceImpl implements PayService {
 	 * @return
 	 */
 	private boolean orderPaid(Long orderId, Integer orderType) {
-		boolean result = false;
-		// 查询订单状态 TODO
-
-		return result;
+		// 查询订单状态
+        return orderService.orderIsPaid(orderId, orderType);
 	}
 
 	/**

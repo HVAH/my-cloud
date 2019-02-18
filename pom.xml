@@ -35,6 +35,7 @@
     <module>admain</module>
     <module>order</module>
     <module>message</module>
+    <module>study</module>
   </modules>
 
   <!-- FIXME change it to the project's website -->

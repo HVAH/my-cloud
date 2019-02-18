@@ -1,5 +1,7 @@
 package com.mall.pay.payhandler;
 
+import com.mall.pay.constant.PayCompany;
+import com.mall.pay.constant.PayType;
 import com.mall.pay.domain.PayInfo;
 import com.mall.pay.domain.RefundInfo;
 import org.springframework.stereotype.Component;
@@ -7,7 +9,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 
 /**
- * @Description TODO
+ * @Description payExcutor
  * @Author HuangJiang
  * @Date 2018/9/7 11:13
  * @Version 1.0
@@ -28,9 +30,9 @@ public class PayEcecutor {
 	public String executePay(PayInfo payInfo, Integer payCom, Integer payType) {
 		PayHandler payHandle = getPayHandle(payCom);
 		switch (payType) {
-			case 1:
+			case PayType.QR_CODE_PAY:
 				return payHandle.qrCodePay(payInfo);
-			case 2:
+			case PayType.APP_PAY:
 				return payHandle.appPay(payInfo);
 			default:
 				throw new RuntimeException("no support payMent");
@@ -74,9 +76,9 @@ public class PayEcecutor {
 	 */
 	private PayHandler getPayHandle(Integer payCompay) {
 		switch (payCompay) {
-			case 1:
+			case PayCompany.ALI:
 				return alipayHandler;
-			case 2:
+			case PayCompany.WEIXIN:
 				return wxpayHandler;
 			default:
 				throw new RuntimeException("no such pay company");

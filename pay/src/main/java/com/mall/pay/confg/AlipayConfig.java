@@ -1,4 +1,4 @@
-package com.mall.pay.confgurer;
+package com.mall.pay.confg;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package com.mall.pay.confgurer;
+package com.mall.pay.confg;
 
 import com.github.wxpay.sdk.WXPay;
 import com.github.wxpay.sdk.WXPayConfig;

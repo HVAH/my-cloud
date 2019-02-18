@@ -1,6 +1,6 @@
 package com.mall.pay.test;
 
-import com.mall.pay.confgurer.MyWxpayConfig;
+import com.mall.pay.confg.MyWxpayConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

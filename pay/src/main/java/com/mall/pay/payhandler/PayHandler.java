@@ -16,28 +16,28 @@ public interface PayHandler {
 	 * @param payInfo
 	 * @return
 	 */
-	public String qrCodePay(PayInfo payInfo);
+	String qrCodePay(PayInfo payInfo);
 
 	/**
 	 * app支付
 	 * @param payInfo
 	 * @return
 	 */
-	public String appPay(PayInfo payInfo);
+	String appPay(PayInfo payInfo);
 
 	/**
 	 * 支付结果查询
 	 * @param orderNo 订单号
 	 * @return
 	 */
-	public String payQuery(String orderNo);
+	String payQuery(String orderNo);
 
 	/**
 	 * 申请退款
 	 * @param refundInfo 退款信息
 	 * @return
 	 */
-	public String refund(RefundInfo refundInfo);
+	String refund(RefundInfo refundInfo);
 
 	/**
 	 * 退款结果查询
@@ -45,11 +45,11 @@ public interface PayHandler {
 	 * @param no
 	 * @return
 	 */
-	public String refundQuery(String refundNo, String no);
+	String refundQuery(String refundNo, String no);
 
 	/**
 	 * 下载对账单
 	 * @return
 	 */
-	public String accountStatement();
+	String accountStatement();
 }

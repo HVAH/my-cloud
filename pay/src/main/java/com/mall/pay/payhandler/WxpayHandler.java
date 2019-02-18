@@ -1,7 +1,7 @@
 package com.mall.pay.payhandler;
 
 import com.github.wxpay.sdk.WXPay;
-import com.mall.base.util.StringUtils;
+import com.mall.base.utils.DateFormatUtils;
 import com.mall.pay.domain.PayInfo;
 import com.mall.pay.domain.RefundInfo;
 import org.slf4j.Logger;
@@ -60,7 +60,7 @@ public class WxpayHandler implements PayHandler{
 	@Override
 	public String refund(RefundInfo refundInfo) {
 		Map<String, String> params = new HashMap<>(8);
-		params.put("nonce_str", StringUtils.uuid());
+		params.put("nonce_str", DateFormatUtils.StringUtils.uuid());
 		params.put("out_trade_no", refundInfo.getOrderNo());
 		params.put("out_refund_no", refundInfo.getRefundNo());
 		params.put("refund_fee", refundInfo.getAmount());
@@ -86,7 +86,7 @@ public class WxpayHandler implements PayHandler{
 	@Override
 	public String refundQuery(String orderNo, String refundNo) {
 		Map<String, String> params = new HashMap<>(5);
-		params.put("nonce_str", StringUtils.uuid());
+		params.put("nonce_str", DateFormatUtils.StringUtils.uuid());
 		params.put("out_refund_no", refundNo);
 
 		Map<String, String> response = new HashMap<>();
@@ -127,9 +127,9 @@ public class WxpayHandler implements PayHandler{
 		// 回调地址
 		params.put("notify_url", PAY_NOTIFY_URL);
 		//
-        params.put("nonce_str", StringUtils.uuid());
+        params.put("nonce_str", DateFormatUtils.StringUtils.uuid());
 		// 支付类型 JSAPI 公众号支付 NATIVE 扫码支付 APP APP支付
-		params.put("trade_type", "NATIVE");
+		params.put("trade_type", tradeType);
 		params.put("product_id", "12");
 		params.put("total_fee", String.format("%.0f", Double.valueOf(payInfo.getAmount()) * 100));
 		params.put("out_trade_no", payInfo.getOrderNo());

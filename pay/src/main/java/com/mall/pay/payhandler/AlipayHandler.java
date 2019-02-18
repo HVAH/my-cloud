@@ -10,7 +10,7 @@ import com.alipay.api.response.AlipayTradeAppPayResponse;
 import com.alipay.api.response.AlipayTradePrecreateResponse;
 import com.alipay.api.response.AlipayTradeQueryResponse;
 import com.alipay.api.response.AlipayTradeRefundResponse;
-import com.mall.pay.confgurer.AlipayConfig;
+import com.mall.pay.confg.AlipayConfig;
 import com.mall.pay.domain.PayInfo;
 import com.mall.pay.domain.RefundInfo;
 import org.slf4j.Logger;
