@@ -28,7 +28,6 @@ public class RedisUtil{
 
 	/**
 	 * 批量删除对应的value
-	 *
 	 * @param keys
 	 */
 	public void remove(final String... keys) {
@@ -39,7 +38,6 @@ public class RedisUtil{
 
 	/**
 	 * 批量删除key
-	 *
 	 * @param pattern
 	 */
 	public void removePattern(final String pattern) {
@@ -50,7 +48,6 @@ public class RedisUtil{
 
 	/**
 	 * 删除对应的value
-	 *
 	 * @param key
 	 */
 	public void remove(final String key) {
@@ -60,7 +57,7 @@ public class RedisUtil{
 	}
 
 	/**
-	 * 判断缓存中是否有对应的value
+	 * 判断缓存中是否有对应的key
 	 *
 	 * @param key
 	 * @return
@@ -78,8 +75,7 @@ public class RedisUtil{
 	public Object get(final String key) {
 		Object result = null;
 		ValueOperations<Serializable, Object> operations = redisTemplate.opsForValue();
-		result = operations.get(key);
-		return result;
+		return operations.get(key);
 	}
 
 	/**
@@ -214,48 +210,46 @@ public class RedisUtil{
 	 */
 	public Boolean batchInsert(final Map<String, Object> keyValueMap, final boolean cover, final Long expireTime) {
 		@SuppressWarnings("unchecked")
-		boolean result = (boolean) redisTemplate.execute(new RedisCallback<Boolean>() {    
-            public Boolean doInRedis(RedisConnection connection) throws DataAccessException {    
-                RedisSerializer<String> serializer = redisTemplate.getStringSerializer();
-                if (cover) {
-                	if (expireTime != null && expireTime > 0) {
-                		for (String keyStr : keyValueMap.keySet()) {    
-		                    byte[] key  = serializer.serialize(keyStr);    
-		                    byte[] value = serializer.serialize(keyValueMap.get(keyStr).toString());    
-		                    connection.set(key, value);
-		                    connection.expire(key, expireTime);
-		                }    
-		                return true;   
-					} else {
-						for (String keyStr : keyValueMap.keySet()) {    
-		                    byte[] key  = serializer.serialize(keyStr);    
-		                    byte[] value = serializer.serialize(keyValueMap.get(keyStr).toString());    
-		                    connection.set(key, value); 
-		                }    
-		                return true;    
+		boolean result = (boolean) redisTemplate.execute((RedisCallback<Boolean>) connection -> {
+			RedisSerializer<String> serializer = redisTemplate.getStringSerializer();
+			if (cover) {
+				if (expireTime != null && expireTime > 0) {
+					for (String keyStr : keyValueMap.keySet()) {
+						byte[] key  = serializer.serialize(keyStr);
+						byte[] value = serializer.serialize(keyValueMap.get(keyStr).toString());
+						connection.set(key, value);
+						connection.expire(key, expireTime);
 					}
+					return true;
 				} else {
-					if (expireTime != null && expireTime != 0) {
-						for (String keyStr : keyValueMap.keySet()) {    
-		                    byte[] key  = serializer.serialize(keyStr);    
-		                    byte[] value = serializer.serialize(keyValueMap.get(keyStr).toString());    
-		                    connection.setNX(key, value);
-		                    connection.expire(key, expireTime);
-		                }    
-		                return true;   
-					} else {
-						for (String keyStr : keyValueMap.keySet()) {    
-		                    byte[] key  = serializer.serialize(keyStr);    
-		                    byte[] value = serializer.serialize(keyValueMap.get(keyStr).toString());    
-		                    connection.setNX(key, value); 
-		                }    
-		                return true;   
+					for (String keyStr : keyValueMap.keySet()) {
+						byte[] key  = serializer.serialize(keyStr);
+						byte[] value = serializer.serialize(keyValueMap.get(keyStr).toString());
+						connection.set(key, value);
 					}
+					return true;
 				}
-                
-                
-            }    
-        }, false, true);    
+			} else {
+				if (expireTime != null && expireTime != 0) {
+					for (String keyStr : keyValueMap.keySet()) {
+						byte[] key  = serializer.serialize(keyStr);
+						byte[] value = serializer.serialize(keyValueMap.get(keyStr).toString());
+						connection.setNX(key, value);
+						connection.expire(key, expireTime);
+					}
+					return true;
+				} else {
+					for (String keyStr : keyValueMap.keySet()) {
+						byte[] key  = serializer.serialize(keyStr);
+						byte[] value = serializer.serialize(keyValueMap.get(keyStr).toString());
+						connection.setNX(key, value);
+					}
+					return true;
+				}
+			}
+
+
+		}, false, true);
         return result;  
 	}
 
@@ -538,7 +532,6 @@ public class RedisUtil{
      * 将list放入缓存
      * @param key 键
      * @param value 值
-     * @param time 时间(秒)
      * @return
      */
     public boolean lSet(String key, Object value) {
@@ -547,8 +540,8 @@ public class RedisUtil{
             return true;
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
-        }
+			return false;
+		}
     }
 
     /**
