@@ -11,11 +11,9 @@ import java.util.concurrent.CountDownLatch;
 public class CountDownLatcehTest {
 
     public static void main(String[] args) {
+        System.out.println("\\xF0\\x9F\\x92\\x8B");
         final CountDownLatch latch = new CountDownLatch(2);
-
-        new Thread(){
-            @Override
-            public void run() {
+        new Thread(() -> {
                 try {
                     System.out.println("子线程"+Thread.currentThread().getName()+"正在执行");
                     Thread.sleep(3000);
@@ -25,23 +23,19 @@ public class CountDownLatcehTest {
                     e.printStackTrace();
                 }
 
-            }
-        }.start();
+        }).start();
 
-        new Thread(){
-            @Override
-            public void run() {
-                try {
-                    System.out.println("子线程"+Thread.currentThread().getName()+"正在执行");
-                    Thread.sleep(3000);
-                    System.out.println("子线程"+Thread.currentThread().getName()+"执行完毕");
-                    latch.countDown();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
+        new Thread(() -> {
+            try {
+                System.out.println("子线程"+Thread.currentThread().getName()+"正在执行");
+                Thread.sleep(3000);
+                System.out.println("子线程"+Thread.currentThread().getName()+"执行完毕");
+                latch.countDown();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-        }.start();
+
+        }).start();
 
         try {
             System.out.println("等待2个子线程执行完毕...");
