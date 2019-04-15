@@ -1,0 +1,18 @@
+
+server:
+  port: 28020
+
+# rabbit
+spring:
+  application:
+    name: admin
+  rabbitmq:
+    host: 192.168.6.200
+    port: 5672
+    username: root
+    password: root
+
+mq:
+  quene: test-quene
+  exchange: test-exchange
+  routingKey: test-routingKey

@@ -1,3 +1,4 @@
+/*
 package com.mall.admain;
 
 import org.apache.commons.lang.time.StopWatch;
@@ -9,12 +10,14 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
 
+*/
 /**
  * @Description TODO
  * @Author HuangJiang
  * @Date 2018/8/24 11:40
  * @Version 1.0
- */
+ *//*
+
 @SpringBootTest
 @RunWith(SpringRunner.class)
 public class test {
@@ -22,10 +25,12 @@ public class test {
 
 	private @Resource AmqpTemplate rabbitTemplate;
 
-	/**
+	*/
+/**
 	 * 测试
 	 * @throws Exception
-	 */
+	 *//*
+
 	@Test
 	public void sendMessage() throws Exception {
 		StopWatch stopWatch = new StopWatch();
@@ -40,3 +45,4 @@ public class test {
 		System.out.println("================耗时: " + stopWatch.getTime() + " ms");
 	}
 }
+*/
