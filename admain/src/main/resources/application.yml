@@ -11,6 +11,9 @@ spring:
     port: 5672
     username: root
     password: root
+  redis:
+    host: 127.0.0.1
+    password: 123456
 
 mq:
   quene: test-quene

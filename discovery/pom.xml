@@ -6,7 +6,7 @@
     <groupId>com.mall</groupId>
     <artifactId>discovery</artifactId>
     <version>1.0.0</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <name>discovery</name>
     <description>注册中心</description>
@@ -46,6 +46,33 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <fork>true</fork>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.4.12</version>
+                <configuration>
+                    <forceTags>true</forceTags>    <!--覆盖相同标签镜像-->
+                    <imageName>itmuch/eureka:1.0.0</imageName>  <!--指定镜像名称 仓库/镜像名:标签-->
+                    <baseImage>java:8</baseImage>    <!--指定基础镜像，相当于dockerFile中的FROM<image> -->
+                    <dockerHost>http://192.168.6.200:2375</dockerHost>  <!-- 指定仓库地址 -->
+                    <entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 
