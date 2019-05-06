@@ -6,7 +6,7 @@
     <groupId>com.mall</groupId>
     <artifactId>oauth</artifactId>
     <version>1.0.0</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <name>oauth</name>
     <description>认证服务器</description>

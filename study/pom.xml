@@ -6,7 +6,7 @@
     <groupId>com.mall</groupId>
     <artifactId>study</artifactId>
     <version>1.0.0</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <name>study</name>
     <description>study</description>

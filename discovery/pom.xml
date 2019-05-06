@@ -40,6 +40,15 @@
         </dependency>
     </dependencies>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
+        <docker.repostory>registry.cn-shenzhen.aliyuncs.com</docker.repostory>
+        <docker.registry.name>vah</docker.registry.name>
+    </properties>
+
     <build>
         <plugins>
             <plugin>
@@ -59,10 +68,12 @@
                 <version>0.4.12</version>
                 <configuration>
                     <forceTags>true</forceTags>    <!--覆盖相同标签镜像-->
-                    <imageName>itmuch/eureka:1.0.0</imageName>  <!--指定镜像名称 仓库/镜像名:标签-->
+                    <imageName>${docker.repostory}/${docker.registry.name}/${project.artifactId}:${project.version}</imageName>  <!--指定镜像名称 仓库/镜像名:标签-->
                     <baseImage>java:8</baseImage>    <!--指定基础镜像，相当于dockerFile中的FROM<image> -->
-                    <dockerHost>http://192.168.6.200:2375</dockerHost>  <!-- 指定仓库地址 -->
+                    <dockerHost>http://192.168.6.200:2375</dockerHost>  <!-- docker 远程服务地址 不指定默认是 127.0.0.1:2375-->
                     <entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
+                    <!-- 指定Dockerfile所在的路径 -->
+                    <!--<dockerDirectory>${project.basedir}/src/main/resources</dockerDirectory>-->
                     <resources>
                         <resource>
                             <targetPath>/</targetPath>
@@ -70,6 +81,9 @@
                             <include>${project.build.finalName}.jar</include>
                         </resource>
                     </resources>
+                    <serverId>docker-aliyun</serverId>
+                    <registryUrl>${docker.repostory}</registryUrl>
+                    <pushImage>true</pushImage>
                 </configuration>
             </plugin>
 

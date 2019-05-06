@@ -6,7 +6,7 @@
     <groupId>com.mall</groupId>
     <artifactId>configer</artifactId>
     <version>1.0.0</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <name>configer</name>
     <description>配置中心</description>

@@ -6,7 +6,7 @@
     <groupId>com.mall</groupId>
     <artifactId>admain</artifactId>
     <version>1.0.0</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <name>service-admain</name>
     <description>后台管理服务</description>
