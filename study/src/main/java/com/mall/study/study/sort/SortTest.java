@@ -92,34 +92,34 @@ public class SortTest {
 	 * @param
 	 * @return
 	 */
-	public static int[] quicklySort(int low, int high, int[] arrSource) {
-		if (low < high) {
-			int result = quicklySort(arrSource, low, high);
-			quicklySort(low, result - 1, arrSource);
-			quicklySort(result + 1, high, arrSource);
+	public static int[] quicklySort(int left, int right, int[] arrSource) {
+		if (left < right) {
+			int result = quicklySort(arrSource, left, right);
+			quicklySort(left, result - 1, arrSource);
+			quicklySort(result + 1, right, arrSource);
 		}
 		return arrSource;
 	}
 
 
-	public static int quicklySort(int[] arrSource, int low, int high) {
-		int key = arrSource[low];
-		while (low < high) {
+	public static int quicklySort(int[] arrSource, int left, int right) {
+		int key = arrSource[left];
+		while (left < right) {
 			// 高位索引向前移,直到其值小于key值
-			while (low < high && arrSource[high] >= key) {
-				high--;
+			while (left < right && arrSource[right] >= key) {
+				right--;
 			}
 			// 将第一个比key值小的值赋给低位索引
-			arrSource[low] = arrSource[high];
+			arrSource[left] = arrSource[right];
 			// 低位索引向后移动,直到其值大于key值
-			while (low < high && arrSource[low] <= key) {
-				low++;
+			while (left < right && arrSource[left] <= key) {
+				left++;
 			}
 			// 将第一个比key值大的值赋值给高位索引
-			arrSource[high] = arrSource[low];
+			arrSource[right] = arrSource[left];
 		}
-		arrSource[low] = key;
-		return low;
+		arrSource[left] = key;
+		return left;
 	}
 	
 	/**

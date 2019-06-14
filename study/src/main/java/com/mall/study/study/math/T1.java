@@ -1,5 +1,8 @@
 package com.mall.study.study.math;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @Description TODO
  * @Author HuangJiang
@@ -25,5 +28,19 @@ public class T1 {
 		System.out.println(value2 == value);
 		System.out.println("包装类用equls比较包装类");
 		System.out.println(value2.equals(value));
+
+		System.out.println(Math.abs((int)Math.pow(-2, 31)));
+
+
+		List l = null;
+		f(l);
+		System.out.println(l);
+
+	}
+
+	private static void f(List list) {
+		if (list == null) {
+			list = new ArrayList();
+		}
 	}
 }
