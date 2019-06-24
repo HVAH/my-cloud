@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: discovery
+Implementation-Version: 1.0.0
+Built-By: N0
+Implementation-Vendor-Id: com.mall
+Created-By: IntelliJ IDEA
+Build-Jdk: 1.8.0_112
+Main-Class: ${start-class}
+

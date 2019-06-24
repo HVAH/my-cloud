@@ -21,7 +21,7 @@
   <!-- 定义微服务模块 -->
   <modules>
     <!-- 核心模块 -->
-    <module>discovery</module>
+    <module>eureka</module>
     <module>config</module>
     <module>search</module>
     <module>oauth</module>

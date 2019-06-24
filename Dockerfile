@@ -4,7 +4,6 @@ LABEL maintainer="java runtime environment <522264152@qq.com>"
 
 USER root
 
-
 RUN mkdir -p /opt/tools/ \
     && yum install -y git
 
