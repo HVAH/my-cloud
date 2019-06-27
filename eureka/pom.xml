@@ -65,15 +65,14 @@
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
-                <version>0.4.12</version>
+                <version>1.2.0</version>
+
                 <configuration>
                     <forceTags>true</forceTags>    <!--覆盖相同标签镜像-->
                     <imageName>${docker.repostory}/${docker.registry.name}/${project.artifactId}:${project.version}</imageName>  <!--指定镜像名称 仓库/镜像名:标签-->
-                    <baseImage>java:8</baseImage>    <!--指定基础镜像，相当于dockerFile中的FROM<image> -->
-                    <dockerHost>http://192.168.6.200:2375</dockerHost>  <!-- docker 远程服务地址 不指定默认是 127.0.0.1:2375-->
-                    <entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
+                    <dockerHost>http://127.0.0.1:2375</dockerHost>  <!-- docker 远程服务地址 不指定默认是 127.0.0.1:2375-->
                     <!-- 指定Dockerfile所在的路径 -->
-                    <!--<dockerDirectory>${project.basedir}/src/main/resources</dockerDirectory>-->
+                    <dockerDirectory>${project.basedir}</dockerDirectory>
                     <resources>
                         <resource>
                             <targetPath>/</targetPath>

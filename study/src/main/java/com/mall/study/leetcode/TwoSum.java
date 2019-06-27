@@ -17,9 +17,9 @@ import java.util.Set;
 public class TwoSum {
     public static void main(String[]args){
         int [] arr = {1, 2, 3, 4, 5, 6, 7, 8};
-        int[] sum = twoSum(arr, 15);
+        int[] sum = twoSum(arr, 10);
         System.out.println(Arrays.toString(sum));
-        System.out.println(Arrays.toString(twoSum2(arr, 15)));
+        System.out.println(Arrays.toString(twoSum2(arr, 10)));
     }
 
     /**

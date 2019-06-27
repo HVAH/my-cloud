@@ -1,1 +1,1 @@
-{"commit":"765849f9d05a5c70a16bf26b211c3d8217aee8ca","digest":"registry.cn-shenzhen.aliyuncs.com/vah/discovery@sha256:fb7cfcbbbb56041f87e132dbc45e107ac571cc3eed9f4f36385edea7822f5a43","image":"registry.cn-shenzhen.aliyuncs.com/vah/discovery:1.0.0","repo":"git@github.com:HVAH/my-cloud.git"}
+{"commit":"6aea1caee3f2de0257ef2648b2b542d739748fef","digest":"registry.cn-shenzhen.aliyuncs.com/vah/eureka@sha256:878b2d961117b9af27fd73228d627e9d6bd150b42fe777922a68e79e91593060","image":"registry.cn-shenzhen.aliyuncs.com/vah/eureka:1.0.0","repo":"git@github.com:HVAH/my-cloud.git"}
