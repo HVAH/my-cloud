@@ -8,21 +8,22 @@ echo "开始构建所选模块：${MODULES}"
 VERSION_ARRAY=()
 INDEX1=0
 
-for loop in $MODULES
+
+for modoule in $MODULES
 do
-	if [ "parent" = ${loop} ]
+	if [ "parent" = ${modoule} ]
     then
     	mvn clean install -DskipTests -Ddockerfile.skip
         break
     fi
-	echo "开始构建: ${loop}模块"
-    cd ${loop}
+	echo "开始构建: ${modoule}模块"
+    cd ${modoule}
     VERSION=$(mvn org.apache.maven.plugins:maven-help-plugin:3.1.0:evaluate -Dexpression=project.version -q -DforceStdout)
     VERSION_ARRAY[$INDEX1]=$VERSION
     INDEX1=$INDEX1+1
     echo ${VERSION}
     mvn clean install -DskipTests -Ddockerfile.skip
-    echo "成功构建: ${loop}模块"
+    echo "成功构建: ${modoule}模块"
     cd ..
 done
 
@@ -32,23 +33,24 @@ for eva in $EVAS
 do
     echo "开始部署: ${eva}环境"
     INDEX2=0
-    for loop in $MODULES
+    for modoule in $MODULES
     do
-        if [ "parent" = ${loop} ]
+        if [ "parent" = ${modoule} ]
         then
             break
         fi
-        if [ "base" = ${loop} ]
+        if [ "base" = ${modoule} ]
         then
             INDEX2=$INDEX2+1
             continue
         fi
-        echo "开始部署: ${loop}模块"
-
-        scp $loop/target/${loop}"-"${VERSION_ARRAY[${INDEX2}]}".jar" ycvr@192.168.0.${eva}:~/modou/Modou-Backend/${loop}/app
-        ssh ycvr@192.168.0.${eva} "cd ~/modou/Modou-Backend/; docker-compose rm -sf $loop; docker-compose up -d $loop"
+        echo "开始部署: ${modoule}模块"
+		FN=${modoule}"-"${VERSION_ARRAY[${INDEX2}]}".jar"
+        echo $FN
+        scp $modoule/target/$FN ycvr@192.168.0.${eva}:~/modou/Modou-Backend/${modoule}/app
+        ssh ycvr@192.168.0.${eva} "cd ~/modou/Modou-Backend/${modoule}/app; docker-compose rm -sf $modoule; mv $FN $modoule".jar"; docker-compose up -d $modoule"
         INDEX2=$INDEX2+1
-        echo "成功部署: ${loop}模块"
+        echo "成功部署: ${modoule}模块"
     done
     echo "完成部署: ${eva}环境"
 done
