@@ -1,6 +1,5 @@
 package com.mall.base.security.jwt.extractor;
 
-import com.mall.base.constant.Header;
 import io.jsonwebtoken.JwtException;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;

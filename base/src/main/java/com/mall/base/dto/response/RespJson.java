@@ -1,6 +1,5 @@
 package com.mall.base.dto.response;
 
-import com.mall.base.constant.Header;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 

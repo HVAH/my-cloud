@@ -1,6 +1,5 @@
 package com.mall.base.utils;
 
-import com.mall.base.constant.ReturnCode;
 import com.mall.base.dto.response.RespMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

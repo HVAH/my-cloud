@@ -1,8 +1,6 @@
 package com.mall.base.utils;
 
 
-import com.mall.base.constant.RegexPattern;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

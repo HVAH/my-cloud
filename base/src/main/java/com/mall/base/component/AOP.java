@@ -6,25 +6,6 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
-import org.springframework.stereotype.Component;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.lang.reflect.Modifier;
-import java.util.HashMap;
-import java.util.Map;
-
-*//*
-
-
-import com.mall.base.utils.ThreadLocalUtils;
-import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -47,6 +28,7 @@ import java.util.Map;
  * @Date 2018/11/8 14:58
  * @Version 1.0
  **//*
+
 
 
 @Component
@@ -95,12 +77,10 @@ public class AOP {
             stream.write(jsonObject.toString().getBytes("UTF-8"));
         }
         //获取参数名称和值
-        logger.info("当前调用接口-[" + request.getRequestURL() + "]");*/
-/*
+        logger.info("当前调用接口-[" + request.getRequestURL() + "]");
 
     }
 
-    *//*
 
 */
 /**
@@ -113,6 +93,7 @@ public class AOP {
      * @return
      * @throws NotFoundException
      *//*
+
 
 
     private Map<String, Object> getFieldsName(Class cls, String clazzName, String methodName, Object[] args) throws
