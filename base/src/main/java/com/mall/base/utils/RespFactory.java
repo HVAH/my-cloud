@@ -1,5 +1,6 @@
 package com.mall.base.utils;
 
+import com.mall.base.constant.ReturnCode;
 import com.mall.base.dto.response.RespBatch;
 import com.mall.base.dto.response.RespJson;
 import com.mall.base.dto.response.RespMessage;

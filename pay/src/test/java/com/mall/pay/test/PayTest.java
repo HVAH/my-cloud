@@ -26,7 +26,6 @@ public class PayTest {
 	 */
 	@Test
 	public void Test() throws Exception {
-
 		System.out.println(myWxpayConfig.getAppID());
 
 	}

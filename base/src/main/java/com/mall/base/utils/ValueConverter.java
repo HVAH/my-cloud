@@ -1,18 +1,19 @@
 package com.mall.base.utils;
 
 
+import com.mall.base.constant.RegexPattern;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import static com.mall.base.constant.Gender.FEMALE;
-import static com.mall.base.constant.Gender.MALE;
 
 
 /**
  * Created by Ken on 2018/4/19.
  */
 public final class ValueConverter {
-    private ValueConverter() {}
+    private ValueConverter() {
+    }
+
     private final static Pattern PATTERN_MOBILE = Pattern.compile(RegexPattern.MOBILE);
 
     public final static Integer ERROR_POSITIVE_INTEGER = -1;
@@ -23,17 +24,6 @@ public final class ValueConverter {
         return value == null ? null : String.valueOf(value);
     }
 
-    public static String fromIntegerToGender(Integer value) {
-        return MALE.equals(value) ? "male" : FEMALE.equals(value) ? "female" : null;
-    }
-
-    public static Integer fromGenderToInteger(String value) {
-        if (value == null) {
-            return null;
-        }
-        value = value.trim();
-        return "male".equals(value) ? MALE : "female".equals(value) ? FEMALE : null;
-    }
 
     public static Long fromStringToPositiveLong(String value) {
         Long result = ERROR_POSITIVE_LONG;
