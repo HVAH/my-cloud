@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.vah.spring.boot.starter.UserAutoConfiguration
