@@ -4,9 +4,12 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Created by Ken on 7/11/2018.
- */
+ * @Description
+ * @Author Jiang
+ * @Date 2019/8/14 10:36
+ * @Version 1.0
+ **/
 @Configuration
-@ComponentScan(basePackages = {"com.vdesign.modou.base"})
+@ComponentScan(basePackages = {"com.mall.base"})
 public class BaseConfig {
 }

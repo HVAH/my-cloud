@@ -20,8 +20,8 @@ import org.springframework.context.annotation.Configuration;
 public class WeiXin4jConfigurer {
     private @Value("${thirdparty.weixin.appid}") String appid;
     private @Value("${thirdparty.weixin.secret}") String secret;
-    private @Value("${spring.redis.host}") String redisHost;
-    private @Value("${spring.redis.password}") String redisPassword;
+    private @Value("${spring.lock.host}") String redisHost;
+    private @Value("${spring.lock.password}") String redisPassword;
 
     @Bean
     public WeixinProxy weixinProxy() {

@@ -11,14 +11,11 @@ import java.lang.reflect.Proxy;
  * @Version 1.0
  **/
 public class JdkDynamicAgent {
-    
     public static class MyHandler implements InvocationHandler {
-        
         private Object beProxy;
         public MyHandler(Object beProxy) {
             this.beProxy = beProxy;
         }
-
         @Override
         public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
             System.out.println("before");
@@ -27,8 +24,6 @@ public class JdkDynamicAgent {
             return result;
         }
     }
-    
-    
     public static <T> T getAgency(Class<T> inerfaceClass, Object beProxy) {
         return (T)Proxy.newProxyInstance(inerfaceClass.getClassLoader(), new Class[]{inerfaceClass}, new MyHandler(beProxy));
     }
