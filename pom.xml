@@ -36,6 +36,7 @@
     <module>order</module>
     <module>message</module>
     <module>study</module>
+    <module>reptile</module>
   </modules>
 
   <!-- FIXME change it to the project's website -->
