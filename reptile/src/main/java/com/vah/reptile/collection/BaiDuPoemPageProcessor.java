@@ -3,29 +3,35 @@ package com.vah.reptile.collection;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.vah.reptile.entity.Poem;
+import com.vah.reptile.repository.PoemRepository;
+import lombok.Data;
+import lombok.experimental.Accessors;
+import org.springframework.stereotype.Service;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.processor.PageProcessor;
 
+import javax.annotation.Resource;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Random;
 
+@Service
+@Data
+@Accessors(chain = true)
 public class BaiDuPoemPageProcessor implements PageProcessor {
-
+    private @Resource PoemRepository poemRepository;
     /**
      * 初始增量
      */
-    private volatile static int i = 1;
+    private volatile static int i = 584;
     /**
      * 最大页码
      */
-    private static final int MAX_PN = 1967;
+    private static final int MAX_PN = 999;
 
-    private SqlSession sqlSession = MybatisUtil.getSqlSession();
 
-    private PoemDao poemDao = sqlSession.getMapper(PoemDao.class);
     private Random random = new Random();
 
     private Site site = Site.me().setTimeOut(20000).setRetryTimes(3).setSleepTime(3000).setRetrySleepTime(3000)
@@ -55,26 +61,19 @@ public class BaiDuPoemPageProcessor implements PageProcessor {
                 e.printStackTrace();
             }
             assert formatPoem != null;
-            System.out.print(formatPoem.getLiteratureAuthor() + " - " + formatPoem.getDisplayName());
-            poemDao.insertPoem(formatPoem);
-            try {
-                sqlSession.commit();
-                System.out.println(" : 插入成功");
-            } catch (Exception e) {
-                sqlSession.rollback();
-                System.out.println(" : 插入失败");
-            }
+            System.out.println(formatPoem.getLiteratureAuthor() + " - " + formatPoem.getDisplayName());
+            poemRepository.save(formatPoem);
         }
         if (i < MAX_PN) {
             i++;
-            String url = "http://hanyu.baidu.com/hanyu/ajax/search_list?wd=%E5%94%90%E8%AF%97&device=pc&from=home&pn=" + i + "&_=" + System.currentTimeMillis();
+            String url = "http://hanyu.baidu.com/hanyu/ajax/search_list?wd=宋词&device=pc&from=home&pn=" + i + "&_=" + System.currentTimeMillis();
             // 将URL添加到请求列表
             page.addTargetRequest(url);
             // 间隔时间
             int setSleepTime = random.nextInt(10000) % (10000 - 500 + 1) + 500;
             try {
-                Thread.sleep(setSleepTime);
                 System.out.println(setSleepTime);
+                Thread.sleep(setSleepTime);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -93,21 +92,22 @@ public class BaiDuPoemPageProcessor implements PageProcessor {
      * @param object object
      * @return newObj
      */
-    private static Object format(Object object) throws ClassNotFoundException, IllegalAccessException, InstantiationException, NoSuchFieldException {
+    private Object format(Object object) throws ClassNotFoundException, IllegalAccessException, InstantiationException, NoSuchFieldException {
         Field[] f = object.getClass().getDeclaredFields();
         Class clazz = Class.forName(object.getClass().getName());
         Object newObj = clazz.newInstance();
         for (Field ft : f) {
             ft.setAccessible(true);
             Field field = clazz.getDeclaredField(ft.getName());
+            if (field.getName().equals("id")) continue;
             field.setAccessible(true);
             field.set(newObj, ft.get(object).toString().substring(2, ft.get(object).toString().length() - 2));
         }
         return newObj;
     }
 
-    public static void main(String[] args) throws Exception {
-        String url = "http://hanyu.baidu.com/hanyu/ajax/search_list?wd=%E5%94%90%E8%AF%97&device=pc&from=home&pn=1&_=1520506954955";
-        Spider.create(new BaiDuPoemPageProcessor()).addUrl(url).thread(1).run();
+    public void reptile() {
+        String url = "http://hanyu.baidu.com/hanyu/ajax/search_list?wd=宋词&device=pc&from=home&pn=" + i + "&_=1520506954955";
+        Spider.create(this).addUrl(url).thread(1).run();
     }
 }

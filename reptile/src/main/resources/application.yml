@@ -1,1 +1,18 @@
+server:
+  port: 9090
 
+spring:
+  application:
+    name: reptile
+  datasource:
+    url: jdbc:mysql://localhost:3306/reptile?useUnicode=true&characterEncoding=utf8&useSSL=false&autoReconnect=true
+    username: root
+    password: abcd1234
+    driver-class-name: com.mysql.jdbc.Driver
+
+
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    database: 0
