@@ -211,7 +211,7 @@ public class RedisUtil{
 	public Boolean batchInsert(final Map<String, Object> keyValueMap, final boolean cover, final Long expireTime) {
 		@SuppressWarnings("unchecked")
 		boolean result = (boolean) redisTemplate.execute((RedisCallback<Boolean>) connection -> {
-			RedisSerializer<String> serializer = redisTemplate.getStringSerializer();
+			RedisSerializer serializer = redisTemplate.getStringSerializer();
 			if (cover) {
 				if (expireTime != null && expireTime > 0) {
 					for (String keyStr : keyValueMap.keySet()) {

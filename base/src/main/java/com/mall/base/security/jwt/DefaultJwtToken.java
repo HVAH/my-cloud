@@ -8,9 +8,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by Ken Huang on 9/3/2018.
- */
 public class DefaultJwtToken implements JwtToken {
     static final String TYPE_KEY = "typ";
     static final String SCOPE_KEY = "scp";

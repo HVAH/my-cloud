@@ -24,7 +24,7 @@ create table IF Not exists `user` (
   `email` varchar (30)  not null default '' comment '邮箱',
   `password` varchar(20) NOT NULL default '' COMMENT '密码',
   `salt` varchar(40) NOT NULL default '' COMMENT '盐',
-  `pid` tinyint(4) unsiged not null comment '应用ID',
+  `pid` tinyint(4) unsiged not null comment '注册来源应用ID',
   `del` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '删除标识 0 删除 1 正常',
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
@@ -50,7 +50,7 @@ create table IF Not exists `wx_auth` (
 create table IF Not exists `platform_app` (
   `id` bigint(30) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
   `appid` varchar(50) unsigned NOT NULL COMMENT '应用ID',
-  `secret` varchar(50) unsiged not null comment '应用secret',
+  `secret` varchar(50) unsiged not null default '' comment '应用secret',
   `platform` tinyint(3) unsiged not null comment '平台类型 1 微信，2 移动端， 3 pc端',
   `message_authorize` tinyint(1) unsiged not null default '1' comment '是否可以进行短信验证登录注册',
   `password_authorize` tinyint(1) unsiged not null default '1' comment '是否可以进行密码登录注册',

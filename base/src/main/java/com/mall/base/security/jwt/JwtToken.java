@@ -4,9 +4,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by Ken Huang on 9/5/2018.
- */
 public interface JwtToken {
     enum Type {
         ACCESS_TOKEN, REFRESH_TOKEN

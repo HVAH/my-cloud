@@ -14,9 +14,6 @@ import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by Ken Huang on 9/03/2018.
- */
 public final class RsaKeyUtil {
     private RsaKeyUtil() {
     }

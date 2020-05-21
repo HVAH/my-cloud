@@ -21,7 +21,7 @@ public class LongestString {
     public static void main(String[]args){
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
-        System.out.println(getLongestString("pwwkew"));
+        System.out.println(getLongestString("pwwkewhaskfnkajbashfskj12345678nvajkldjgflahiasdfgbkjsa dvaksjndgjlashgqwhgbaskjbnasibsabmlasbhkasdjnvakslbnaslhb asb"));
         stopWatch.stop();
         System.out.println(stopWatch.getTime());
     }

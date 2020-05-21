@@ -43,7 +43,7 @@ public class WxProxyFactory {
 
 //    @Scheduled(cron = "0 0 0 * * ?")
     private void initProxy() {
-            weixinProxyMap.put("wx9790544c70e9b2dd", new WeixinProxy(new WeixinAccount("wx9790544c70e9b2dd", "xiaifeifei123"), redisCacheStorager));
+            weixinProxyMap.put("wx9790544c70e9b2dd", new WeixinProxy(new WeixinAccount("wx9790544c70e9b2dd", "5b1ba3aff193976b1091e9d3647793fa"), redisCacheStorager));
     }
 
     @Bean

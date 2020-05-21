@@ -4,19 +4,17 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
+import javax.annotation.Resource;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by Ken Huang on 9/7/2018.
- */
-@Component
 public class JwtTokenFactory {
     private PublicKey publicKey;
 
