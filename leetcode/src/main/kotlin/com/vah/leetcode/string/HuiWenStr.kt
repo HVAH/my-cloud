@@ -1,10 +1,10 @@
 package com.vah.leetcode.string;
 
 /**
- *@Description
+ *@Description  中心扩展法
  *@Author HuangJiang
  **/
-fun huiwenStr(s: String): String {
+fun expand(s: String): String {
     if (s.isBlank() || s.length == 1) return s
     var b = 0
     var end = 0
@@ -37,6 +37,16 @@ fun expandLength(s: String, l: Int, r: Int): Int {
     }
 }
 
+fun baoli(s: String) {
+
+}
+
+fun isHuiWenStr(s: String) {
+    for (i in s.indices) {
+
+    }
+}
+
 fun main() {
-    println(huiwenStr("aaaaaa"))
+    println(expand("aaaaaa"))
 }
