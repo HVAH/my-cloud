@@ -1,8 +1,4 @@
-package com.vah.leetcode.math;
-
-import java.math.BigDecimal
-import java.math.RoundingMode
-import kotlin.math.pow
+package com.vah.let.math;
 
 /**
  *@Description 平方根
